@@ -1,0 +1,135 @@
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    font-size: 18px;
+}
+
+/* animacion para que el modal aparezca desde la derecha de la pantalla (el modal está fixed right-0 entonces
+/* en el keyframes se le da un translate de 300px para que no se vea y luego se le da un translateX(0) para que se vea) */
+@keyframes modalanimation {
+    0% {
+        transform: translateX(200px);
+        opacity: 0.90;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.translated {
+    animation: modalanimation 0.3s ;
+}
+
+
+@keyframes modalOutAnimation {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(382px);
+      opacity: 0.90;
+    }
+  }
+
+.modalOut {
+    animation: modalOutAnimation 0.3s ;
+}
+
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+
+.button-div{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.modal-background {
+    background-color: rgba(13, 13, 14, 0.8);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 999
+}
+
+.modal-body {
+    position: fixed;
+    background-color: var(--color-primary);
+    width: 300px;
+    right: 0;
+    top: 0px;
+    height: 100vh;
+    border-top-left-radius: 0.75rem/* 12px */;
+    border-bottom-left-radius: 0.75rem/* 12px */;
+    z-index: 9999
+}
+
+@media (min-width: 640px) {
+    .modal-body {
+        width: 382px; /* Display the header */
+    }
+}
+
+.modal-section {
+    background-color: var(--color-primary);
+    cursor: pointer;
+    border-radius: 0.75rem/* 12px */;
+    padding-left: 2.5rem/* 40px */;
+    padding-right: 2.5rem/* 40px */;
+    padding-top: 1.5rem/* 24px */;
+    padding-bottom: 1.5rem/* 24px */;
+}
+
+.modal-section h2 {
+    font-size: 1.5rem/* 24px */;
+    line-height: 2rem/* 32px */;
+    margin-bottom: 1.25rem/* 20px */;
+    color: var(--color-iconstext);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 12px;
+}
+
+.modal-section div {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.75rem/* 12px */;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-section p {
+    color: var(--color-iconstext-hover);
+    font-size: 1rem/* 16px */;
+}
+
+
+.divider {
+    width: 80%;
+    height: 4px;
+    background-color: var(--color-tertiary);
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 9999px;
+    margin-top: 2.5rem/* 40px */;
+}

@@ -1,0 +1,39 @@
+.icon-keyboard {
+   fill: var(--color-selected);
+}
+
+.icons-header {
+    fill: var(--color-iconstext);
+    width: 20px;
+    height: 20px;
+    transition: all 300ms linear;
+}
+
+.icons-header:hover {
+    fill: var(--color-iconstext-hover);   
+}
+
+.icons-notification-modal {
+    fill: var(--color-iconstext);
+    width: 20px;
+    height: 20px;
+    transition: all 300ms linear;
+}
+
+.bell-icon {
+    width: 24px;
+    height: 24px;
+}
+
+
+.icons-footer {
+    fill: var(--color-iconstext);
+    width: 12px;
+    height: 12px;
+    transition: all 300ms linear;
+}
+
+.icons-footer:hover {
+    fill: var(--color-iconstext-hover);   
+}
+
