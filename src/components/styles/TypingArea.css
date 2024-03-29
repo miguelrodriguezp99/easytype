@@ -1,0 +1,75 @@
+.timer {
+    font-size: 24px;
+    margin: 0.25em;
+    color: var(--color-secondary);
+}
+
+
+.typing-area{
+    font-family: Menlo, monospace;
+    margin-top: 32px;
+    display: grid;
+    justify-content: center;
+}
+
+.typing-area-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.words-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 120px;
+    color: var(--color-iconstext);
+    font-size: 1.5rem;
+    overflow: hidden;
+}
+
+.word {
+    font-size: 1em;
+    line-height: 1em;
+    margin: 0.25em;
+    border-bottom: 2px solid transparent;
+}
+
+.letter {
+    color: purple;
+    position: relative;
+
+    &.active::before {
+        content: '|';
+        color: var(--color-secondary);
+        font-size: 1.5rem;
+        position: absolute;
+        left: -65%;
+        animation: 1.2s blink infinite ease-in-out;
+      }
+
+    &.active.is-last::before {
+        left: 65%;
+    }
+  
+}
+
+.letter.correct {
+    color: green;
+}
+
+.letter.incorrect {
+    color: red;
+}
+
+
+@keyframes blink {
+
+    0%,
+    25% {
+      opacity: 1;
+    }
+
+    75% {
+      opacity: 0;
+    }
+  }

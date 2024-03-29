@@ -11,9 +11,9 @@ const useSignup = () => {
     const success = confirmSignup(username, email, confirmEmail, password, confirmPassword);
     if (!success) return;
     setLoading(true);
-
+    //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
-      const res = await fetch(`https://${process.env.REACT_APP_API_URL}/auth/signup`, {
+      const res = await fetch(`https://miguel-main-server.vercel.app/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

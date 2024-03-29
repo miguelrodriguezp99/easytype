@@ -71,7 +71,11 @@ export const Bell = () => {
 
 export const Profile = () => {
   return (
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" className={`icons-header`}>
+    <svg
+      viewBox="0 0 32 32"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`icons-header profile-icon`}
+    >
       <title />
 
       <path d="M16,16A7,7,0,1,0,9,9,7,7,0,0,0,16,16ZM16,4a5,5,0,1,1-5,5A5,5,0,0,1,16,4Z" />
@@ -141,19 +145,11 @@ export const Tool = () => {
 
 export const Logout = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="var(--color-primary)"
-      className={`icons-header`}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-      <path d="M9 12h12l-3 -3" />
-      <path d="M18 15l3 -3" />
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg " className={`icons-header`}>
+      <g>
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M5 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5zm10-6l5-4-5-4v3H9v2h6v3z" />
+      </g>
     </svg>
   );
 };

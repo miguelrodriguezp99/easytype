@@ -7,15 +7,25 @@ import {
   KeyboardSecondIcon,
   Settings,
   Profile,
+  Logout,
 } from "./../assets/icons/HeaderIcons";
 import NotificationModal from "./Modal/NotificationModal";
+import { useAuthContext } from "../context/AuthContext";
+import useLogout from "../hooks/useLogout";
+
 const Header = () => {
+  const { authUser } = useAuthContext();
+  const { logout } = useLogout();
   const handleTitleClick = (e) => {
     e.preventDefault();
     // e.stopPropagation();
     // restart();
     // navigate("/");
     // setFocusedTrue();
+  };
+
+  const handleLogOut = () => {
+    logout();
   };
 
   return (
@@ -25,14 +35,14 @@ const Header = () => {
           <KeyboardIcon />
         </Link>
       </div>
-      <h1
+      <span
         className="header-title"
         onClick={(e) => {
           handleTitleClick(e);
         }}
       >
         typemonkey
-      </h1>
+      </span>
       <div className="header-icons">
         <KeyboardSecondIcon />
         <Link to="/">
@@ -43,11 +53,32 @@ const Header = () => {
       </div>
 
       <div className="profile-icons">
-        <NotificationModal />
+        <div className="header-icons">
+          {authUser ? (
+            <>
+              <div className="group">
+                <Link className="profile-icon" to="login">
+                  <Profile />
+                  <span className="header-username">{authUser.username}</span>
+                </Link>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
 
-        <Link to="login">
-          <Profile />
-        </Link>
+          <NotificationModal />
+
+          {authUser ? (
+            <div onClick={handleLogOut}>
+              <Logout />
+            </div>
+          ) : (
+            <Link to="login">
+              <Profile />
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );

@@ -21,6 +21,7 @@ const AuthForm = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    console.log(loginInputs);
     await login(loginInputs);
   };
 

@@ -1,0 +1,8 @@
+.typing-app{
+    display:flex;
+    flex-direction: column;
+    height: 100%;
+    background: rgb(19, 12, 12);
+    position: relative;
+}
+

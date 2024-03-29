@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import "../styles/Modal.css";
+import "../styles/NotificationModal.css";
 import { Bell } from "../../assets/icons/HeaderIcons";
 import { Announcement, Notification } from "../../assets/icons/NotificationModal";
 

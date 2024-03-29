@@ -1,3 +1,84 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+:root {
+    --color-primary: #333; 
+    --color-secondary: #e2b714;
+    --color-tertiary: #1f2022;
+    --color-iconstext: #646669;
+    --color-iconstext-hover: #d1d0c5;
+    --color-text: white;
+    --color-logo: #d1d0c5;
+    --color-selected: #e2b714;;
+    --color-error: red;
+    --color-randomwords: #4a4c50; 
+}
+
+.dark {
+    --color-primary: #333; 
+    --color-secondary: #e2b714;
+    --color-tertiary: #1f2022;
+    --color-iconstext: #646669;
+    --color-iconstext-hover: #d1d0c5;
+    --color-text: white;
+    --color-logo: #d1d0c5;
+    --color-selected: #e2b714;;
+    --color-error: red;
+    --color-randomwords: #4a4c50; 
+}
+  
+.light {
+    --color-primary: #ddd;
+    --color-secondary: #333;
+    --color-tertiary: #aaa7a7;
+    --color-iconstext: #4d4d4d;
+    --color-iconstext-hover: black;
+    --color-text: black;
+    --color-logo: black;
+    --color-selected: black;
+    --color-error: red; 
+    --color-randomwords: #4a4c50;
+}
+
+.vscode {
+    --color-primary: #333;
+    --color-secondary: #007acc;
+    --color-tertiary: #2c2e31;
+    --color-iconstext: #646669;
+    --color-iconstext-hover: #ddd;
+    --color-text: #007acc;
+    --color-logo: #ddd;
+    --color-selected: #007acc;
+    --color-error: red;
+    --color-randomwords: #4a4c50;
+}
+  
+.trance {
+    --color-primary: #00021b;
+    --color-secondary: #e51376;
+    --color-secondary-hover: #e4d612;
+    --color-tertiary: #18214c;
+    --color-iconstext: #3c4c79;
+    --color-iconstext-hover: white;
+    --color-text: #e51376;
+    --color-logo: #ddd;
+    --color-selected: #e51376;
+    --color-error: #02d3b0;
+    --color-randomwords: #4a4c50;
+}
+  
+.eva-04 {
+    --color-primary: #6d45a1;
+    --color-secondary: #501a97;
+    --color-tertiary: #226126;
+    --color-iconstext: white;
+    --color-iconstext-hover: #73d378;
+    --color-text: #240947;
+    --color-logo: #55c35b;
+    --color-selected: #1f0c38;
+    --color-error: red;
+    --color-randomwords: #50a054;
+}

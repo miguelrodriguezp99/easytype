@@ -2,16 +2,20 @@ import PropTypes from "prop-types";
 import "./styles/Layout.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Toaster } from "sonner";
 
 function Layout({ children }) {
   return (
-    <div id="app" className="dark">
-      <div className="grid-layout">
-        <Header />
-        {children}
-        <Footer />
+    <>
+      <Toaster richColors position="top-right" />
+      <div id="app">
+        <div className="grid-layout">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

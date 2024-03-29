@@ -1,0 +1,19 @@
+export const APP_STATE = {
+  STOPPED: "STOPPED",
+  RUNNING: "RUNNING",
+  FINISHED: "FINISHED",
+};
+
+export const PUNCTUATION_MODE = {
+  PUNCTUATION: "PUNCTUATION",
+  NUMBERS: "NUMBERS",
+  DISABLED: "DISABLED",
+};
+
+export const GAME_MODE = {
+  WORDS: "WORDS",
+  TIME: "TIME",
+  QUOTE: "QUOTE",
+  ZEN: "ZEN",
+  CUSTOM: "CUSTOM",
+};

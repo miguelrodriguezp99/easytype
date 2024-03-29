@@ -9,8 +9,9 @@ const useLogout = () => {
 
   const logout = async () => {
     setLoading(true);
+    //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
-      const res = await fetch(`https://${process.env.REACT_APP_API_URL}/auth/logout`, {
+      const res = await fetch(`https://miguel-main-server.vercel.app/auth/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });

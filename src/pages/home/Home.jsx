@@ -1,5 +1,18 @@
+import Options from "../../components/Options";
+import TypingArea from "../../components/TypingArea";
+import useGameStart from "../../hooks/useGameStart";
+import "./Home.css";
+
 const Home = () => {
-  return <div className="text-3xl text-purple-800">Home!</div>;
+  // Initialize the game
+  useGameStart();
+
+  return (
+    <section className="typing-app">
+      <Options />
+      <TypingArea />
+    </section>
+  );
 };
 
 export default Home;
