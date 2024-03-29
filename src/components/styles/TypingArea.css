@@ -16,6 +16,9 @@
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+    user-select: none;
+    
 }
 
 .words-container {
@@ -35,7 +38,7 @@
 }
 
 .letter {
-    color: purple;
+    color: var(--color-iconstext);
     position: relative;
 
     &.active::before {
@@ -54,7 +57,7 @@
 }
 
 .letter.correct {
-    color: green;
+    color: var(--color-iconstext-hover);
 }
 
 .letter.incorrect {

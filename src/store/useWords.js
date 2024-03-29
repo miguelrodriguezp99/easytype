@@ -35,8 +35,46 @@ export const useWordsStore = create((set, get) => ({
     }
   },
 
+  // Get letter state
+  getLetterState: (wordIndex, letterIndex) => {
+    const words = get().words;
+    if (words[wordIndex] && words[wordIndex][letterIndex]) {
+      return words[wordIndex][letterIndex].state;
+    }
+    // Retorna un valor predeterminado o null si la palabra o letra no existe
+    return null;
+  },
+
+  // Update function
   update: (fn) => set(fn),
 
+  // Increment the letter index
+  incrementLetterIndex: () => {
+    set({ letterIndex: get().letterIndex + 1 });
+  },
+  resetLetterIndex: () => {
+    set({ letterIndex: 0 });
+  },
+  incrementWordIndex: () => {
+    set({ wordIndex: get().wordIndex + 1 });
+  },
+  // Reset the word index
+  resetWordIndex: () => {
+    set({ wordIndex: 0 });
+  },
+
+  // Mutable way
+  // Change the state of a letter
+  // markLetterWithState: (wordIndex, letterIndex, newState) => {
+  //   // Calcular el nuevo array con los cambios
+  //   const newWords = get().words;
+  //   newWords[wordIndex][letterIndex].state = newState;
+
+  //   // Actualizar el estado
+  //   set({ words: newWords });
+  // },
+
+  //Inmutable way
   markLetterWithState: (wordIndex, letterIndex, newState) => {
     set((state) => {
       const newWords = [...state.words];
@@ -45,6 +83,8 @@ export const useWordsStore = create((set, get) => ({
 
       newWord[letterIndex] = newLetter;
       newWords[wordIndex] = newWord;
+
+      // Return a new object with the new state
       return { ...state, words: newWords };
     });
   },
