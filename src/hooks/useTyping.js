@@ -10,12 +10,16 @@ const useTyping = (inputRef) => {
     words,
     wordIndex,
     letterIndex,
-    update,
     markLetterWithState,
     incrementLetterIndex,
     resetLetterIndex,
     incrementWordIndex,
     getLetterState,
+    setLetterIndex,
+    decrementWordIndex,
+    setFocusedTrue,
+    isFocused,
+    appState,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -29,7 +33,9 @@ const useTyping = (inputRef) => {
     if (letterIndex < words[wordIndex].length) {
       letterState = "incorrect";
     } else {
-      if (getLetterState(wordIndex, letterIndex - 1) === "correct active last") {
+      if (
+        getLetterState(wordIndex, letterIndex - 1) === "correct active last"
+      ) {
         letterState = "correct";
       } else {
         letterState = "incorrect";
@@ -56,7 +62,6 @@ const useTyping = (inputRef) => {
     }
 
     // If it's the last letter
-
     markLetterWithState(wordIndex, letterIndex - 1, letterState); // This removes the caret
     updateIndexes();
 
@@ -78,12 +83,12 @@ const useTyping = (inputRef) => {
     (event) => {
       const { key, code } = event;
       if (!isKeyboardCodeAllowed(code)) return;
-
       const currentWord = words[wordIndex];
       const currentLetter = currentWord[letterIndex];
       const currentLetterValue = currentLetter?.letter;
       inputRef.current.maxLength = currentWord?.length;
       inputRef.current.focus();
+      if (!isFocused) setFocusedTrue();
 
       // ---- Tabulation ----
       if (key === "Tab") {
@@ -91,6 +96,19 @@ const useTyping = (inputRef) => {
         //restart();
         return;
       }
+
+      // ---- Control DEBUGGER ----
+      if (key === "Control") {
+        console.log("LetterIndex: ", letterIndex);
+        console.log("WordIndex: ", wordIndex);
+        console.log("CurrentWord: ", currentWord);
+        console.log("CurrentLetter: ", currentLetter);
+        console.log("Words.length - 1", words.length - 1);
+        console.log("words[wordIndex].length - 1", words[wordIndex].length);
+        console.log("appState", appState);
+        return;
+      }
+
       // ---- Spacebar ----
       if (key === " ") {
         event.preventDefault();
@@ -102,40 +120,83 @@ const useTyping = (inputRef) => {
 
       // ---- Backspace ----
       if (key === "Backspace") {
-        update((state) => {
-          if (state.letterIndex > 0) {
-            state.words[state.wordIndex][state.letterIndex - 1].state = null;
-            return { letterIndex: state.letterIndex - 1 };
-          } else if (state.letterIndex === 0) {
-            if (state.wordIndex > 0) {
-              update(() => ({ letterIndex: words[state.wordIndex - 1].length }));
-              return { wordIndex: state.wordIndex - 1 };
+        // Begining of the text
+        if (letterIndex === 0 && wordIndex === 0) {
+          return;
+        }
+
+        // If the letter is the last of the word
+        if (letterIndex === words[wordIndex].length) {
+          markLetterWithState(wordIndex, letterIndex - 1, "active");
+          setLetterIndex(letterIndex - 1);
+          return;
+        }
+
+        // If the letter is in the middle of the word
+        if (letterIndex > 0) {
+          markLetterWithState(wordIndex, letterIndex, null);
+          markLetterWithState(wordIndex, letterIndex - 1, "active");
+          setLetterIndex(letterIndex - 1);
+        }
+
+        // If the letter is the first one in the word and it's not the first word
+        if (letterIndex === 0 && wordIndex > 0) {
+          //Logic to check if the previous word is correct
+          const previousWord = words[wordIndex - 1];
+          let canBackspace = false;
+          previousWord.forEach((letter) => {
+            if (letter.state === "incorrect") {
+              canBackspace = true;
+              return;
             }
+          });
+
+          // If the previous word is correct entirely, we can't go back
+          if (!canBackspace) {
+            return;
           }
 
-          return state;
-        });
+          markLetterWithState(wordIndex, 0, null);
+          let previousWordLastLetterState = getLetterState(
+            wordIndex - 1,
+            words[wordIndex - 1].length - 1
+          );
+
+          markLetterWithState(
+            wordIndex - 1,
+            words[wordIndex - 1].length - 1,
+            `${previousWordLastLetterState} active last`
+          );
+          setLetterIndex(words[wordIndex - 1].length);
+          decrementWordIndex();
+        }
+
         return;
       }
 
-      // ---- Normal typing keys ----
+      // ------- Normal typing keys ------- //
       if (letterIndex === currentWord.length) {
         return;
       }
       // Update the state of the letter and increment the index
       const letterState = currentLetterValue === key ? "correct" : "incorrect";
 
-      //Si es la ultima letra el estado es active last
+      // If it's the last letter then mark it as active last, otherwise mark it as active
       if (letterIndex + 1 === currentWord.length) {
-        markLetterWithState(wordIndex, letterIndex, `${letterState} active last`);
+        markLetterWithState(
+          wordIndex,
+          letterIndex,
+          `${letterState} active last`
+        );
       } else {
         markLetterWithState(wordIndex, letterIndex, letterState);
         markLetterWithState(wordIndex, letterIndex + 1, "active");
       }
 
       incrementLetterIndex();
+      // -----------------------------------
 
-      // ------ OTHERS ------ //
+      // ------ OTHERS ------
       // Sound
       if (!muted) {
         play();
@@ -150,7 +211,6 @@ const useTyping = (inputRef) => {
       play,
       muted,
       inputRef,
-      update,
       words,
       wordIndex,
       letterIndex,
@@ -158,6 +218,12 @@ const useTyping = (inputRef) => {
       markLetterWithState,
       incrementLetterIndex,
       resetLetterIndex,
+      setLetterIndex,
+      decrementWordIndex,
+      getLetterState,
+      setFocusedTrue,
+      isFocused,
+      appState,
     ]
   );
 

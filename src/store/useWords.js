@@ -4,15 +4,54 @@ import { generate } from "random-words";
 
 export const useWordsStore = create((set, get) => ({
   selectedWords: 60,
+  timeSelected: 30,
+  timeRemaining: 30,
+  timeUsed: 0,
   words: [],
-  gameMode: GAME_MODE.TIME,
-  actualState: APP_STATE.STOPPED,
+  gameMode: GAME_MODE.WORDS,
+  appState: APP_STATE.STOPPED,
+  punctuationMode: PUNCTUATION_MODE.DISABLED,
   wordIndex: 0,
   letterIndex: 0,
+  isFocused: true,
+
+  setSelectedWords: (words) => {
+    set({ selectedWords: words });
+  },
 
   setWords: () => {
     if (get().gameMode === GAME_MODE.TIME) {
-      const generatedWords = generate({ exactly: get().selectedWords, maxLength: 10 });
+      const generatedWords = generate({
+        exactly: get().selectedWords,
+        maxLength: 10,
+      });
+
+      // Transform every word into an array of objects (letter, index, state)
+      const wordsWithLettersAsObjects = generatedWords.map((word) =>
+        word.split("").map((letter, index) => ({
+          letter,
+          index,
+          state: null, // Initial state
+        }))
+      );
+
+      //Set the first letter of the first word as active
+      wordsWithLettersAsObjects[0][0].state = "active";
+
+      // Update the store
+      set({
+        words: wordsWithLettersAsObjects,
+        wordIndex: 0,
+        letterIndex: 0,
+      });
+    }
+
+    // If the game mode is WORDS
+    if (get().gameMode === GAME_MODE.WORDS) {
+      const generatedWords = generate({
+        exactly: get().selectedWords,
+        maxLength: 10,
+      });
 
       // Transform every word into an array of objects (letter, index, state)
       const wordsWithLettersAsObjects = generatedWords.map((word) =>
@@ -48,15 +87,25 @@ export const useWordsStore = create((set, get) => ({
   // Update function
   update: (fn) => set(fn),
 
+  setLetterIndex: (index) => {
+    set({ letterIndex: index });
+  },
+
   // Increment the letter index
   incrementLetterIndex: () => {
     set({ letterIndex: get().letterIndex + 1 });
   },
+
   resetLetterIndex: () => {
     set({ letterIndex: 0 });
   },
+
   incrementWordIndex: () => {
     set({ wordIndex: get().wordIndex + 1 });
+  },
+
+  decrementWordIndex: () => {
+    set({ wordIndex: get().wordIndex - 1 });
   },
   // Reset the word index
   resetWordIndex: () => {
@@ -64,7 +113,7 @@ export const useWordsStore = create((set, get) => ({
   },
 
   // Mutable way
-  // Change the state of a letter
+  //Change the state of a letter
   // markLetterWithState: (wordIndex, letterIndex, newState) => {
   //   // Calcular el nuevo array con los cambios
   //   const newWords = get().words;
@@ -119,4 +168,28 @@ export const useWordsStore = create((set, get) => ({
   //     return nextState; // Actualizamos el estado con nuestras modificaciones
   //   });
   // },
+
+  setFocusedTrue: () => {
+    set({ isFocused: true });
+  },
+
+  setFocusedFalse: () => {
+    set({ isFocused: false });
+  },
+
+  setTimeRemaining: (time) => {
+    set({ timeRemaining: time });
+  },
+
+  setAppStateRunning: () => {
+    set({ appState: APP_STATE.RUNNING });
+  },
+
+  setAppStateFinished: () => {
+    set({ appState: APP_STATE.FINISHED });
+  },
+
+  setTimeUsed: (time) => {
+    set({ timeUsed: time });
+  },
 }));

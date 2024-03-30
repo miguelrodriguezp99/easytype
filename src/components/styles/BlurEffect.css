@@ -1,0 +1,25 @@
+.blur-text{
+    position: absolute;
+    inset: 0px;
+    color: white;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    cursor: pointer;
+}
+
+.text-blur-appear {
+    display: flex;
+    animation: appear 1s ease-in-out 0.7s both;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

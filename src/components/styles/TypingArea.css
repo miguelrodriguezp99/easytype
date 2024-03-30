@@ -7,9 +7,9 @@
 
 .typing-area{
     font-family: Menlo, monospace;
-    margin-top: 32px;
-    display: grid;
-    justify-content: center;
+    justify-content: left;
+    position: relative;
+    
 }
 
 .typing-area-input {
@@ -21,17 +21,23 @@
     
 }
 
+.blur-wrapper {
+    position: relative;
+    min-width: 100%;
+  }
+
 .words-container {
     display: flex;
     flex-wrap: wrap;
-    height: 120px;
     color: var(--color-iconstext);
     font-size: 1.5rem;
     overflow: hidden;
+    min-width: 100%;
+    max-height: 115px;
+
 }
 
 .word {
-    font-size: 1em;
     line-height: 1em;
     margin: 0.25em;
     border-bottom: 2px solid transparent;
@@ -76,3 +82,18 @@
       opacity: 0;
     }
   }
+
+
+
+  .blurred {
+    animation: setblur 0.5s ease-in-out 1s both;
+  }
+
+  @keyframes setblur {
+    0% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(5px);
+    }
+}

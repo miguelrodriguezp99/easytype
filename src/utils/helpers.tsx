@@ -25,7 +25,8 @@ export const isKeyboardCodeAllowed = (code: string) => {
         code === "IntlRo" || // Tecla de barra
         code === "IntlYen" || // Tecla de barra
         code === "IntlBackslash" || // Tecla de barra
-        code === "Escape" // Tecla Escape
+        code === "Escape" || // Tecla Escape
+        code === "ControlLeft"
     );
 };
 
