@@ -11,8 +11,14 @@ const Footer = () => {
       <div className="flex">
         <div className="footer-links">
           {links.map((link, index) => (
-            <a key={index} href={link.href} className="group" target="_blank" rel="noreferrer">
-              <link.icon {...link.props} className="icons-footer group" />
+            <a
+              key={index}
+              href={link.href}
+              className="group"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <link.icon {...link.props} />
               <p className="footer-icon-text">{link.text}</p>
             </a>
           ))}

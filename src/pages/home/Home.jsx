@@ -1,4 +1,4 @@
-import Options from "../../components/Options";
+import Options from "../../components/GameModeOptions/Options";
 import TypingArea from "../../components/TypingArea";
 import useFocusWord from "../../hooks/useFocusWord";
 import useGameEnd from "../../hooks/useGameEnd";

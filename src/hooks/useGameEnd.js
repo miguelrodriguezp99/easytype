@@ -22,6 +22,7 @@ const useGameEnd = () => {
       );
     }
 
+    // If the game mode is time, we finish the game when the time runs out
     if (gameMode === GAME_MODE.TIME) {
       return timeRemaining === 0;
     }
@@ -29,7 +30,6 @@ const useGameEnd = () => {
     return false;
   }, [wordIndex, letterIndex, gameMode, words, timeRemaining]);
 
-  // Finish the game when the user has finished typing all the words or the time has run out
   useEffect(() => {
     if (hasFinished) {
       setAppStateFinished();

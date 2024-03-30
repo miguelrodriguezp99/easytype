@@ -37,3 +37,15 @@
     fill: var(--color-iconstext-hover);   
 }
 
+.icons-game-mode {
+    margin-top: 1px;
+    fill: var(--color-iconstext);
+    width: 12px;
+    height: auto;
+    transition: all 300ms linear;
+}
+
+.icons-game-mode:hover {
+    fill: var(--color-iconstext-hover);   
+}
+
