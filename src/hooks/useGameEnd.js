@@ -14,7 +14,7 @@ const useGameEnd = () => {
   } = useWordsStore();
 
   const hasFinished = useMemo(() => {
-    if (gameMode === GAME_MODE.WORDS) {
+    if (gameMode === GAME_MODE.WORDS || gameMode === GAME_MODE.QUOTE) {
       //Devolvemos true si el letterIndex y el WordIndex son el ultimo de la lista de palabras (si hemos llegado al final)
       return (
         wordIndex === words.length - 1 &&

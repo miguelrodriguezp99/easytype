@@ -9,7 +9,7 @@
 }
 
 header .keyboard-icon {
-    margin-top: 10px;
+    margin-top: 6px;
      
 }
 
@@ -21,6 +21,9 @@ header .header-title {
 @media (min-width: 640px) {
     header .header-title{
         display: flex; /* Display the header */
+        text-align: center;
+        justify-content: center;
+        
     }
 }
 
@@ -31,7 +34,7 @@ header .header-title {
 
 
     gap: 24px;
-    margin-top: 12px;
+    margin-top: 6px;
     margin-left: 8px;
     flex: 1;
 }

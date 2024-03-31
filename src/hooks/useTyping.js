@@ -3,6 +3,7 @@ import { useWordsStore } from "../store/useWords";
 import useSound from "use-sound";
 import { useSoundsStore } from "../store/useSound";
 import { isKeyboardCodeAllowed } from "../utils/helpers";
+import { APP_STATE } from "../utils/constants";
 
 const useTyping = (inputRef) => {
   const {
@@ -20,6 +21,10 @@ const useTyping = (inputRef) => {
     setFocusedTrue,
     isFocused,
     appState,
+    selectedWords,
+    punctuationMode,
+    gameMode,
+    restart,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -93,9 +98,11 @@ const useTyping = (inputRef) => {
       // ---- Tabulation ----
       if (key === "Tab") {
         event.preventDefault();
-        //restart();
+        restart();
         return;
       }
+
+      if (appState === APP_STATE.FINISHED) return;
 
       // ---- Control DEBUGGER ----
       if (key === "Control") {
@@ -106,6 +113,9 @@ const useTyping = (inputRef) => {
         console.log("Words.length - 1", words.length - 1);
         console.log("words[wordIndex].length - 1", words[wordIndex].length);
         console.log("appState", appState);
+        console.log("selectedWords", selectedWords);
+        console.log("punctuationMode", punctuationMode);
+        console.log("gameMode", gameMode);
         return;
       }
 
@@ -224,6 +234,9 @@ const useTyping = (inputRef) => {
       setFocusedTrue,
       isFocused,
       appState,
+      selectedWords,
+      punctuationMode,
+      gameMode,
     ]
   );
 

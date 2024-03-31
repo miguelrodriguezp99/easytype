@@ -1,6 +1,5 @@
 .timer {
     font-size: 24px;
-    margin: 0.25em;
     color: var(--color-secondary);
 }
 
@@ -9,8 +8,10 @@
     font-family: Menlo, monospace;
     justify-content: left;
     position: relative;
-    
-}
+    margin-top: auto;
+    margin-bottom: auto;
+    animation: fade 0.5s ease-in-out;
+}   
 
 .typing-area-input {
     position: absolute;
@@ -18,7 +19,6 @@
     left: 0;
     opacity: 0;
     user-select: none;
-    
 }
 
 .blur-wrapper {
@@ -33,7 +33,7 @@
     font-size: 1.5rem;
     overflow: hidden;
     min-width: 100%;
-    max-height: 115px;
+    max-height: 115px; 
 
 }
 
@@ -69,6 +69,16 @@
 .letter.incorrect {
     color: red;
 }
+
+
+@keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 
 @keyframes blink {

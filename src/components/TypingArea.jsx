@@ -4,13 +4,14 @@ import "./styles/TypingArea.css";
 import useTyping from "../hooks/useTyping";
 import BlurEffect from "./BlurEffect";
 import Timer from "./Timer";
+import { APP_STATE } from "../utils/constants";
 
 const TypingArea = () => {
-  const { words, isFocused } = useWordsStore();
+  const { words, isFocused, appState } = useWordsStore();
   const inputRef = useRef(null);
   const paragraphRef = useRef(null);
 
-  useTyping(inputRef, paragraphRef); // Asegúrate de que useTyping pueda manejar esta estructura también
+  useTyping(inputRef, paragraphRef);
 
   // Función para determinar la clase basada en el estado de la letra
   const getLetterClass = (state) => {
@@ -31,7 +32,9 @@ const TypingArea = () => {
   };
 
   return (
-    <main className="typing-area">
+    <main
+      className={`typing-area ${appState === APP_STATE.FINISHED && "hidden"}`}
+    >
       <time className="timer">
         <Timer />
       </time>

@@ -5,13 +5,23 @@
     margin-left: auto;
     margin-right: auto;
     gap: 0.5rem/* 8px */;
-    animation: fade;
-    animation-iteration-count: 1;
-    animation-duration: 300ms;
-    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
-    animation-direction: normal;
-    animation-fill-mode: both;
+    animation: fade 300ms cubic-bezier(0.4, 0, 1, 1) both;
 }
+
+.options-hide {
+    animation: dissapear 200ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes dissapear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
 
 
 .content {
@@ -21,7 +31,7 @@
     align-items: center;
     border-radius: 0.375rem/* 6px */;
     gap: 0.75rem/* 12px */;
-    padding: 0.5rem/* 8px */;
+    padding: 6px/* 8px */;
     margin-left: auto;
     margin-right: auto;
 }
@@ -65,7 +75,6 @@
 @media (max-width: 768px) {
     .options-game-mode-container  {
         gap: 1.5rem/* 24px */;
-        
     }
 }
 @media (max-width: 640px) {
@@ -85,7 +94,7 @@
 .options-divider {
 
     width: 4px/* 4px */;
-    height: 24px;
+    height: 22px;
     background-color: var(--color-primary);
     border-radius: 0.375rem/* 6px */;
     display: none;
@@ -112,8 +121,6 @@
     cursor: pointer;
     font-size: 0.875rem/* 14px */;
     line-height: 1.25rem/* 20px */;
-    
-
 }
 
 .game-options-text{
@@ -142,6 +149,118 @@
     color: var(--color-iconstext);
 }
 
+/* ------------- NUMBER OF WORDS OPTIONS -------------*/
+.number-of-words-options-container {
+    display: flex;
+    margin-left: 0.75rem/* 12px */;
+    margin-right: 0.75rem/* 12px */;
+    animation: fade 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+
+    gap: 0.75rem/* 12px */;
+}
+
+@media (min-width: 1024px) {
+    .number-of-words-options-container {
+        gap: 0.8rem/* 24px */;
+        
+    }
+}
+
+@media (max-width: 768px) {
+    .number-of-words-options-container {
+        gap: 2rem/* 32px */;
+    }
+}
+
+.number-of-words-options-text {
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+    font-weight: 400;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.number-of-words-options-text.selected {
+    color: var(--color-selected);
+}
+
+.number-of-words-options-text.not-selected {
+    color: var(--color-iconstext);
+}
+
+.not-selected:hover {
+    color: var(--color-iconstext-hover);
+}
+
+
+/* ------------- PUNTUATION OPTIONS -------------*/
+.puntuation-options-container {
+    display: flex;
+    letter-spacing: -0.025em;
+    margin-right: 0.75rem/* 12px */;
+    margin-left: 0.75rem/* 12px */;
+    gap: 0.75rem/* 12px */;
+    animation: fade 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    gap: 2.5rem/* 40px */;
+}
+
+@media (min-width: 1024px) {
+    .puntuation-options-container {
+        gap: 1rem/* 16px */;
+        
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .puntuation-options-container{
+        gap: 0.5rem/* 8px */;
+        
+    }
+}
+
+@media (max-width: 640px) {
+    .puntuation-options-container {
+        gap: 2.5rem/* 40px */;
+        
+    }
+}
+
+.punctuation-options-buttons {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem/* 4px */;
+    cursor: pointer;
+    font-size: 0.875rem/* 14px */;
+    line-height: 1.25rem/* 20px */;
+}
+
+.punctuation-options-text{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.punctuation-mode-group:hover .punctuation-options-icons{
+    fill: var(--color-secondary);
+}
+
+.punctuation-mode-group:hover .punctuation-options-text, .punctuation-mode-group:hover .icons-punctuation{
+    fill: var(--color-iconstext-hover);
+    color: var(--color-iconstext-hover);
+}
+
+
+.punctuation-options-buttons-selected {
+    fill: var(--color-secondary);
+    color: var(--color-secondary);
+
+}
+
+.punctuation-options-buttons-not-selected {
+    fill: var(--color-iconstext);
+    color: var(--color-iconstext);
+}
 
 
 @keyframes fade {

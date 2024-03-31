@@ -6,7 +6,11 @@ import "./../styles/Options.css";
 import { GAME_MODE } from "../../utils/constants";
 
 const GameMode = () => {
-  const { gameMode } = useWordsStore();
+  const { gameMode, setGameMode } = useWordsStore();
+
+  const handleChangeGameMode = (mode) => {
+    setGameMode(mode);
+  };
 
   return (
     <section className="options-game-mode-container">
@@ -25,8 +29,9 @@ const GameMode = () => {
                 ? "game-options-buttons-selected "
                 : "game-options-buttons-not-selected"
             }`}
+            onClick={() => handleChangeGameMode(option.value)}
           >
-            <option.icon className="icons-game-options group" />
+            <option.icon />
             <p className="game-options-text">{option.text}</p>
           </div>
         ))

@@ -1,63 +1,31 @@
 import { useWordsStore } from "../../store/useWords";
+import { numberOfWordsOptions } from "../../utils/constants";
 
 const WordsOptions = () => {
-  const { numberOfWords } = useWordsStore();
+  const { selectedWords, setSelectedWords } = useWordsStore();
 
-  // const { handleWordsChange } = useGameModeOpts();
+  const handleWordsChange = (value, event) => {
+    event.preventDefault();
+    setSelectedWords(value);
+  };
 
   return (
-    <section
-      className="flex mx-3 gap-8 sm:gap-8 lg:gap-3 md:gap-2.5
-    animate-fade animate-duration-800 animate-ease-in-out animate-normal animate-fill-both"
-    >
-      <button
-        // onClick={(event) => handleWordsChange(15, event)}
-        selected={numberOfWords === "15"}
-      >
-        <p
-          className={`text-sm font-semibold transition-all duration-300 ${
-            numberOfWords === 15
-              ? "text-selected"
-              : "text-iconstext hover:text-iconstext-hover"
-          }`}
+    <section className="number-of-words-options-container">
+      {numberOfWordsOptions.map((option, index) => (
+        <button
+          key={index}
+          onClick={(event) => handleWordsChange(option.value, event)}
+          selected={selectedWords === option.value}
         >
-          15
-        </p>
-      </button>
-
-      <button>
-        <p
-          className={`text-sm font-semibold transition-all duration-300 ${
-            numberOfWords === 30
-              ? "text-selected"
-              : "text-iconstext hover:text-iconstext-hover"
-          }`}
-        >
-          30
-        </p>
-      </button>
-      <button>
-        <p
-          className={`text-sm font-semibold transition-all duration-300 ${
-            numberOfWords === 60
-              ? "text-selected"
-              : "text-iconstext hover:text-iconstext-hover"
-          }`}
-        >
-          60
-        </p>
-      </button>
-      <button>
-        <p
-          className={`text-sm font-semibold transition-all duration-300 ${
-            numberOfWords === 75
-              ? "text-selected"
-              : "text-iconstext hover:text-iconstext-hover"
-          }`}
-        >
-          75
-        </p>
-      </button>
+          <p
+            className={`number-of-words-options-text ${
+              selectedWords === option.value ? "selected" : "not-selected"
+            }`}
+          >
+            {option.text}
+          </p>
+        </button>
+      ))}
     </section>
   );
 };

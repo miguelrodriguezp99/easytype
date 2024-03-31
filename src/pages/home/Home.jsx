@@ -1,4 +1,5 @@
 import Options from "../../components/GameModeOptions/Options";
+import Results from "../../components/Results";
 import TypingArea from "../../components/TypingArea";
 import useFocusWord from "../../hooks/useFocusWord";
 import useGameEnd from "../../hooks/useGameEnd";
@@ -23,6 +24,7 @@ const Home = () => {
     <section className="typing-app">
       <Options />
       <TypingArea />
+      <Results />
     </section>
   );
 };

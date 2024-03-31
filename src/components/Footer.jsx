@@ -1,4 +1,4 @@
-import { links } from "../utils/footerLinks";
+import { footerLinks } from "../utils/constants";
 import Guide from "./Footer/Guide";
 import SoundModal from "./Modal/SoundModal";
 import ThemeModal from "./Modal/ThemeModal";
@@ -10,7 +10,7 @@ const Footer = () => {
       <Guide />
       <div className="flex">
         <div className="footer-links">
-          {links.map((link, index) => (
+          {footerLinks.map((link, index) => (
             <a
               key={index}
               href={link.href}

@@ -1,16 +1,20 @@
 import { useWordsStore } from "../../store/useWords";
 import GameMode from "./GameMode";
 import WordsOptions from "./WordsOptions";
-import { GAME_MODE } from "../../utils/constants";
+import { GAME_MODE, APP_STATE } from "../../utils/constants";
 import TimeOptions from "./TimeOptions";
 
 import "./../styles/Options.css";
 import PunctuationOptions from "./PunctuationOptions";
 
 const Options = () => {
-  const { gameMode } = useWordsStore();
+  const { gameMode, appState } = useWordsStore();
   return (
-    <div className="options-div">
+    <div
+      className={`options-div ${
+        appState !== APP_STATE.STOPPED && "options-hide"
+      }`}
+    >
       <div className="content">
         {/* -------- Header Top Left || SELECTION OF PUNCTUATION -----------  */}
         {(gameMode === GAME_MODE.WORDS || gameMode === GAME_MODE.TIME) && (

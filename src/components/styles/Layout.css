@@ -40,7 +40,7 @@ primary: background
 .dark {
     --color-primary: #333; 
     --color-secondary: #e2b714;
-    --color-tertiary: #1f2022;
+    --color-tertiary: #101111;
     --color-iconstext: #646669;
     --color-iconstext-hover: #d1d0c5;
     --color-text: white;

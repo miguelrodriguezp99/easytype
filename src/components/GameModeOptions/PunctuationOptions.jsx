@@ -1,46 +1,37 @@
 import { useWordsStore } from "../../store/useWords";
-
-import { PUNCTUATION_MODE } from "../../utils/constants";
-import { AtSign, Hashtag } from "../../assets/icons/HeaderIcons";
+import { gameModePunctuationOptions } from "../../utils/constants";
 
 const PunctuationOptions = () => {
-  const { punctuation } = useWordsStore();
+  const { punctuationMode, setPunctuationMode } = useWordsStore();
   // const { handleChangePunctuationMode, handleChangeNumbersMode } =
   //   useGamePunctuationMode();
 
-  return (
-    <section
-      className="flex lg:gap-4 md:gap-2 sm:gap-10 gap-10 tracking-tight mr-3
-    animate-fade animate-duration-800 animate-ease-in-out animate-normal animate-fill-both"
-    >
-      <div
-        className={`group cursor-pointer flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 lg:ml-3 md:ml-1
-      ${
-        punctuation === PUNCTUATION_MODE.PUNCTUATION
-          ? "fill-secondary text-secondary"
-          : "fill-iconstext text-iconstext"
-      }`}
-      >
-        <AtSign props="w-4 h-4 group-hover:fill-iconstext-hover transtion-all duration-300" />
-        <p className="text-sm group-hover:text-iconstext-hover transtion-all duration-300">
-          punctuation
-        </p>
-      </div>
+  const handleChangePunctuationMode = (mode) => {
+    setPunctuationMode(mode);
+  };
 
-      <div
-        // onClick={() => handleChangeNumbersMode(PUNCTUATION_MODE.PUNCTUATION)}
-        className={`group cursor-pointer flex align-center items-center text-center gap-1 lg:gap-2 md:gap-1 
-      ${
-        punctuation === PUNCTUATION_MODE.NUMBERS
-          ? "fill-secondary text-secondary"
-          : "fill-iconstext text-iconstext"
-      }`}
-      >
-        <Hashtag props="w-4 h-4 group-hover:fill-iconstext-hover transtion-all duration-300" />
-        <p className="text-sm group-hover:text-iconstext-hover transtion-all duration-300">
-          numbers
-        </p>
-      </div>
+  return (
+    <section className="puntuation-options-container">
+      {
+        // Map over the gameModePunctuationOptions array to display the punctuation options
+        gameModePunctuationOptions.map((option, index) => (
+          <div
+            key={index}
+            onClick={() => handleChangePunctuationMode(option.value)}
+            className={`punctuation-options-buttons punctuation-mode-group
+          ${
+            punctuationMode === option.value
+              ? "punctuation-options-buttons-selected"
+              : "punctuation-options-buttons-not-selected"
+          }`}
+          >
+            <div className="icon">
+              <option.icon />
+            </div>
+            <p className="punctuation-options-text">{option.text}</p>
+          </div>
+        ))
+      }
     </section>
   );
 };

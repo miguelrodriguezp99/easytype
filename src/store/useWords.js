@@ -1,15 +1,21 @@
 import { create } from "zustand";
 import { APP_STATE, PUNCTUATION_MODE, GAME_MODE } from "../utils/constants";
 import { generate } from "random-words";
+import { quotes } from "../utils/quotes";
+import {
+  getRandomPunctuationWord,
+  getRandomNumberWord,
+} from "../utils/helpers";
 
 export const useWordsStore = create((set, get) => ({
-  selectedWords: 60,
+  selectedWords: 25,
+  previousSelectedWords: 15, // Used to switch between time and words mode
   timeSelected: 30,
   timeRemaining: 30,
   timeUsed: 0,
   words: [],
   gameMode: GAME_MODE.WORDS,
-  appState: APP_STATE.STOPPED,
+  appState: APP_STATE.FINISHED,
   punctuationMode: PUNCTUATION_MODE.DISABLED,
   wordIndex: 0,
   letterIndex: 0,
@@ -19,58 +25,90 @@ export const useWordsStore = create((set, get) => ({
     set({ selectedWords: words });
   },
 
+  setSelectedPreviousWords: (words) => {
+    set({ previousSelectedWords: words });
+  },
+
+  setPunctuationMode: (mode) => {
+    set({ punctuationMode: mode });
+  },
+
   setWords: () => {
+    // Function to set the words with letters as objects (we make an array of objects with the letter
+    // and the state of the letter) so words is an array of arrays of objects
+    const setWordsWithLettersAsObjects = (generatedWords) => {
+      const wordsWithLettersAsObjects = generatedWords.map((word) =>
+        word.split("").map((letter, index) => ({
+          letter,
+          index,
+          state: null, // Initial state
+        }))
+      );
+
+      //Set the first letter of the first word as active
+      wordsWithLettersAsObjects[0][0].state = "active";
+
+      // Update the store
+      set({
+        words: wordsWithLettersAsObjects,
+        wordIndex: 0,
+        letterIndex: 0,
+      });
+    };
+
+    if (get().gameMode === GAME_MODE.QUOTE) {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      const generatedWords = randomQuote.split(" ");
+
+      setWordsWithLettersAsObjects(generatedWords);
+      return;
+    }
+
     if (get().gameMode === GAME_MODE.TIME) {
       const generatedWords = generate({
         exactly: get().selectedWords,
         maxLength: 10,
       });
 
-      // Transform every word into an array of objects (letter, index, state)
-      const wordsWithLettersAsObjects = generatedWords.map((word) =>
-        word.split("").map((letter, index) => ({
-          letter,
-          index,
-          state: null, // Initial state
-        }))
-      );
-
-      //Set the first letter of the first word as active
-      wordsWithLettersAsObjects[0][0].state = "active";
-
-      // Update the store
-      set({
-        words: wordsWithLettersAsObjects,
-        wordIndex: 0,
-        letterIndex: 0,
-      });
+      setWordsWithLettersAsObjects(generatedWords);
+      return;
     }
 
     // If the game mode is WORDS
     if (get().gameMode === GAME_MODE.WORDS) {
-      const generatedWords = generate({
-        exactly: get().selectedWords,
-        maxLength: 10,
-      });
+      let generatedWords;
 
-      // Transform every word into an array of objects (letter, index, state)
-      const wordsWithLettersAsObjects = generatedWords.map((word) =>
-        word.split("").map((letter, index) => ({
-          letter,
-          index,
-          state: null, // Initial state
-        }))
-      );
+      if (get().punctuationMode === PUNCTUATION_MODE.DISABLED) {
+        generatedWords = generate({
+          exactly: get().selectedWords,
+          maxLength: 10,
+        });
+      }
 
-      //Set the first letter of the first word as active
-      wordsWithLettersAsObjects[0][0].state = "active";
+      if (get().punctuationMode === PUNCTUATION_MODE.PUNCTUATION) {
+        generatedWords = generate({
+          exactly: get().selectedWords,
+          maxLength: 10,
+          formatter: (word, index) => {
+            // Function to get a random punctuation word or a character
+            return getRandomPunctuationWord(word, index);
+          },
+        });
+      }
 
-      // Update the store
-      set({
-        words: wordsWithLettersAsObjects,
-        wordIndex: 0,
-        letterIndex: 0,
-      });
+      if (get().punctuationMode === PUNCTUATION_MODE.NUMBERS) {
+        generatedWords = generate({
+          exactly: get().selectedWords,
+          maxLength: 10,
+          formatter: (word, index) => {
+            // Function to get a random number word or a character
+            return getRandomNumberWord(word, index);
+          },
+        });
+      }
+
+      setWordsWithLettersAsObjects(generatedWords);
+      return;
     }
   },
 
@@ -82,6 +120,10 @@ export const useWordsStore = create((set, get) => ({
     }
     // Retorna un valor predeterminado o null si la palabra o letra no existe
     return null;
+  },
+
+  setGameMode: (mode) => {
+    set({ gameMode: mode });
   },
 
   // Update function
@@ -177,6 +219,10 @@ export const useWordsStore = create((set, get) => ({
     set({ isFocused: false });
   },
 
+  setTimeSelected: (time) => {
+    set({ timeSelected: time });
+  },
+
   setTimeRemaining: (time) => {
     set({ timeRemaining: time });
   },
@@ -191,5 +237,14 @@ export const useWordsStore = create((set, get) => ({
 
   setTimeUsed: (time) => {
     set({ timeUsed: time });
+  },
+
+  restart: () => {
+    get().setWords();
+    set({ timeUsed: 0 });
+    set({ timeRemaining: get().timeSelected });
+    set({ appState: APP_STATE.STOPPED });
+    set({ wordIndex: 0 });
+    set({ letterIndex: 0 });
   },
 }));

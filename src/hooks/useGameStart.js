@@ -10,6 +10,10 @@ const useGameStart = () => {
     setAppStateRunning,
     gameMode,
     setSelectedWords,
+    selectedWords,
+    restart,
+    timeSelected,
+    punctuationMode,
   } = useWordsStore();
 
   useEffect(() => {
@@ -29,6 +33,11 @@ const useGameStart = () => {
       setSelectedWords(75);
     }
   }, [gameMode, setSelectedWords]);
+
+  // Conditions to restart the game if something changes
+  useEffect(() => {
+    restart();
+  }, [selectedWords, restart, gameMode, timeSelected, punctuationMode]);
 };
 
 export default useGameStart;
