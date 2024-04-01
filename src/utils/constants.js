@@ -107,7 +107,7 @@ export const gameModePunctuationOptions = [
   },
 ];
 
-export const resultIconsButtons = [
+export const resultIconsButtons = ({ restart }) => [
   {
     icon: Next,
     text: "next",
@@ -116,7 +116,7 @@ export const resultIconsButtons = [
   {
     icon: Restart,
     text: "restart",
-    fn: () => console.log("restart"),
+    fn: restart,
   },
   {
     icon: Danger,

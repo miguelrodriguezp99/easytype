@@ -7,25 +7,40 @@ const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuthContext();
 
-  const signup = async ({ username, email, confirmEmail, password, confirmPassword }) => {
-    const success = confirmSignup(username, email, confirmEmail, password, confirmPassword);
+  const signup = async ({
+    username,
+    email,
+    confirmEmail,
+    password,
+    confirmPassword,
+  }) => {
+    const success = confirmSignup(
+      username,
+      email,
+      confirmEmail,
+      password,
+      confirmPassword
+    );
     if (!success) return;
     setLoading(true);
     //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
-      const res = await fetch(`https://miguel-main-server.vercel.app/auth/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          confirmEmail,
-          password,
-          confirmPassword,
-        }),
-      });
+      const res = await fetch(
+        `https://${process.env.REACT_APP_API_URL}/auth/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            confirmEmail,
+            password,
+            confirmPassword,
+          }),
+        }
+      );
 
       const data = await res.json();
 
@@ -51,7 +66,13 @@ const useSignup = () => {
 
 export default useSignup;
 
-export const confirmSignup = (username, email, confirmEmail, password, confirmPassword) => {
+export const confirmSignup = (
+  username,
+  email,
+  confirmEmail,
+  password,
+  confirmPassword
+) => {
   if (!email || !confirmEmail || !username || !password || !confirmPassword) {
     toast.error("Please fill in all fields");
     return false;

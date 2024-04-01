@@ -2,13 +2,24 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/SoundModal.css";
 import { useSoundsStore } from "../../store/useSound";
 import { SOUND_MAP, getSoundName } from "../../utils/soundsMap";
-import { Volume, VolumeSilence } from "../../assets/icons/FooterIcons";
+import {
+  MusicalNote,
+  Volume,
+  VolumeSilence,
+} from "../../assets/icons/FooterIcons";
 import useSound from "use-sound";
 
 export default function SoundModal() {
   const [modal, setModal] = useState(false);
   const [actualNameSong, setActualNameSong] = useState("cherry");
-  const { currentSound, volume, setCurrentSound, muted, setMuteOn, setMuteOff } = useSoundsStore();
+  const {
+    currentSound,
+    volume,
+    setCurrentSound,
+    muted,
+    setMuteOn,
+    setMuteOff,
+  } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
   const [animationClass, setAnimationClass] = useState("");
 
@@ -81,7 +92,8 @@ export default function SoundModal() {
           </button>
         )}
 
-        <button onClick={toggleModal}>
+        <button onClick={toggleModal} className="sound-modal-button group">
+          <MusicalNote />
           <p className="footer-volume-text">{actualNameSong}</p>
         </button>
       </div>
@@ -93,8 +105,12 @@ export default function SoundModal() {
             <h2>Select your sound!</h2>
             <div className="sound-modal-buttons">
               <button onClick={switchSound(SOUND_MAP["cherry"])}>cherry</button>
-              <button onClick={switchSound(SOUND_MAP["typewriter"])}>typewriter</button>
-              <button onClick={switchSound(SOUND_MAP["keyboard"])}>keyboard</button>
+              <button onClick={switchSound(SOUND_MAP["typewriter"])}>
+                typewriter
+              </button>
+              <button onClick={switchSound(SOUND_MAP["keyboard"])}>
+                keyboard
+              </button>
             </div>
           </div>
         </div>

@@ -2,6 +2,16 @@
     background-color: var(--color-primary);
     animation: fade 0.5s ease-in-out;
     z-index: 1;
+    height: 100%;
+    place-content: center;
+}
+
+.show-results{
+    display: grid;
+}
+
+.hide-results{
+    display: none;
 }
 
 .cancel-animations {
@@ -12,6 +22,8 @@
     display: grid;
     width: 100%;
     gap: 1rem;
+    
+    ;
     grid-template-columns: auto 1fr;
     grid-template-areas: 
         "stats chart"

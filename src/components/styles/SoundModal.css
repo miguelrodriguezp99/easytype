@@ -1,11 +1,21 @@
 .footer-sound-icons {
     display: flex;
     flex-direction: row;
-    gap: 0.55rem;
+    gap: 1.5rem;
     align-items: center;
     font-size: .65rem;   
     letter-spacing: 1.3px;
-    
+}
+
+
+.sound-modal-button {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem/* 4px */;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    letter-spacing: 1.3px;
 }
 
 
@@ -21,9 +31,9 @@
 }
 
 .volume-button {
-    margin-top: 0.125rem/* 2px */;
     user-select: none;
 }
+
 
 .sound-modal-body {
     width: 100%;

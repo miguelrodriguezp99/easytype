@@ -12,16 +12,19 @@ const useLogin = () => {
     if (!success) return;
 
     setLoading(true);
-
     //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
-      const res = await fetch(`https://miguel-main-server.vercel.app/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const res = await fetch(
+        `https://${process.env.REACT_APP_API_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
+      console.log("nose");
 
       const data = await res.json();
 

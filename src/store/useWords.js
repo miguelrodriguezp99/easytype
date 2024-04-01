@@ -6,6 +6,7 @@ import {
   getRandomPunctuationWord,
   getRandomNumberWord,
 } from "../utils/helpers";
+import { insertScore } from "../utils/serverFunctions";
 
 export const useWordsStore = create((set, get) => ({
   selectedWords: 25,
@@ -14,12 +15,17 @@ export const useWordsStore = create((set, get) => ({
   timeRemaining: 30,
   timeUsed: 0,
   words: [],
+  wordsAsString: "",
   gameMode: GAME_MODE.WORDS,
   appState: APP_STATE.FINISHED,
   punctuationMode: PUNCTUATION_MODE.DISABLED,
   wordIndex: 0,
   letterIndex: 0,
   isFocused: true,
+  correctLetters: 0,
+  incorrectLetters: 0,
+  wpm: 0,
+  accuracy: 0,
 
   setSelectedWords: (words) => {
     set({ selectedWords: words });
@@ -107,6 +113,7 @@ export const useWordsStore = create((set, get) => ({
         });
       }
 
+      set({ wordsAsString: generatedWords.join("") });
       setWordsWithLettersAsObjects(generatedWords);
       return;
     }
@@ -118,6 +125,7 @@ export const useWordsStore = create((set, get) => ({
     if (words[wordIndex] && words[wordIndex][letterIndex]) {
       return words[wordIndex][letterIndex].state;
     }
+
     // Retorna un valor predeterminado o null si la palabra o letra no existe
     return null;
   },
@@ -154,17 +162,6 @@ export const useWordsStore = create((set, get) => ({
     set({ wordIndex: 0 });
   },
 
-  // Mutable way
-  //Change the state of a letter
-  // markLetterWithState: (wordIndex, letterIndex, newState) => {
-  //   // Calcular el nuevo array con los cambios
-  //   const newWords = get().words;
-  //   newWords[wordIndex][letterIndex].state = newState;
-
-  //   // Actualizar el estado
-  //   set({ words: newWords });
-  // },
-
   //Inmutable way
   markLetterWithState: (wordIndex, letterIndex, newState) => {
     set((state) => {
@@ -179,37 +176,6 @@ export const useWordsStore = create((set, get) => ({
       return { ...state, words: newWords };
     });
   },
-
-  // updateCaret: () => {
-  //   set((state) => {
-  //     const nextState = { ...state }; // Clonamos el estado actual para modificarlo
-
-  //     // Si no es la ultima letra
-  //     if (nextState.letterIndex < nextState.words[nextState.wordIndex].length) {
-  //       nextState.words[nextState.wordIndex][nextState.letterIndex].state = "incorrect";
-  //       nextState.wordIndex += 1;
-  //       nextState.letterIndex = 0;
-  //       if (nextState.wordIndex + 1 < nextState.words.length) {
-  //         nextState.words[nextState.wordIndex][0].state = "active";
-  //       }
-  //       return nextState;
-  //     }
-
-  //     // Si es la ultima letra
-  //     nextState.words[nextState.wordIndex][nextState.letterIndex - 1].state = "correct";
-  //     // Marcamos la priemra letra del siguiente word como active
-  //     if (nextState.wordIndex + 1 < nextState.words.length) {
-  //       nextState.words[nextState.wordIndex + 1][0].state = "active";
-  //     }
-
-  //     if (nextState.wordIndex + 1 < nextState.words.length) {
-  //       nextState.wordIndex += 1;
-  //       nextState.letterIndex = 0;
-  //     }
-
-  //     return nextState; // Actualizamos el estado con nuestras modificaciones
-  //   });
-  // },
 
   setFocusedTrue: () => {
     set({ isFocused: true });
@@ -247,4 +213,97 @@ export const useWordsStore = create((set, get) => ({
     set({ wordIndex: 0 });
     set({ letterIndex: 0 });
   },
+
+  calculateResults: () => {
+    const calculateWPM = () => {
+      const minutes = get().timeUsed / 60;
+      const averageWordLength =
+        get().wordsAsString.length / get().selectedWords;
+      const wpm = Math.floor(
+        get().correctLetters / averageWordLength / minutes
+      );
+      return wpm;
+    };
+
+    // Results for the game mode WORDS and QUOTE
+    if (
+      get().gameMode === GAME_MODE.WORDS ||
+      get().gameMode === GAME_MODE.QUOTE
+    ) {
+      let correctLetters = 0;
+      get().words.forEach((word) => {
+        word.forEach((letter) => {
+          if (
+            letter.state === "correct" ||
+            letter.state === "correct active last"
+          ) {
+            correctLetters += 1;
+          }
+        });
+      });
+
+      const totalLetters = get().wordsAsString.length;
+      const incorrectLetters = totalLetters - correctLetters;
+      set({ correctLetters });
+      set({ incorrectLetters });
+
+      const wpm = calculateWPM();
+      set({ wpm });
+
+      const accuracy = Math.floor((correctLetters / totalLetters) * 100);
+      set({ accuracy });
+
+      insertScore({
+        gameMode: get().gameMode,
+        timeUsed: get().timeUsed,
+        timeSelected: get().timeSelected,
+        timeRemaining: get().timeRemaining,
+        selectedWords: get().selectedWords,
+        wpm: get().wpm,
+        accuracy: get().accuracy,
+      });
+    }
+  },
 }));
+
+// Mutable way
+//Change the state of a letter
+// markLetterWithState: (wordIndex, letterIndex, newState) => {
+//   // Calcular el nuevo array con los cambios
+//   const newWords = get().words;
+//   newWords[wordIndex][letterIndex].state = newState;
+
+//   // Actualizar el estado
+//   set({ words: newWords });
+// },
+
+// updateCaret: () => {
+//   set((state) => {
+//     const nextState = { ...state }; // Clonamos el estado actual para modificarlo
+
+//     // Si no es la ultima letra
+//     if (nextState.letterIndex < nextState.words[nextState.wordIndex].length) {
+//       nextState.words[nextState.wordIndex][nextState.letterIndex].state = "incorrect";
+//       nextState.wordIndex += 1;
+//       nextState.letterIndex = 0;
+//       if (nextState.wordIndex + 1 < nextState.words.length) {
+//         nextState.words[nextState.wordIndex][0].state = "active";
+//       }
+//       return nextState;
+//     }
+
+//     // Si es la ultima letra
+//     nextState.words[nextState.wordIndex][nextState.letterIndex - 1].state = "correct";
+//     // Marcamos la priemra letra del siguiente word como active
+//     if (nextState.wordIndex + 1 < nextState.words.length) {
+//       nextState.words[nextState.wordIndex + 1][0].state = "active";
+//     }
+
+//     if (nextState.wordIndex + 1 < nextState.words.length) {
+//       nextState.wordIndex += 1;
+//       nextState.letterIndex = 0;
+//     }
+
+//     return nextState; // Actualizamos el estado con nuestras modificaciones
+//   });
+// },

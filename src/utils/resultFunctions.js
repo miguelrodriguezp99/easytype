@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import { toast } from "sonner";
+import { GAME_MODE } from "./constants";
 
 export const takeScreenshot = () => {
   // const animationClasses = "animate-fade animate-once animate-duration-[800ms] animate-normal animate-fill-both";
@@ -45,4 +46,12 @@ export const takeScreenshot = () => {
       })
       .catch(() => toast.error("Error copying screenshot to clipboard"));
   }, 500);
+};
+
+export const getTestType = (gameMode, timeSelected, numberOfWords) => {
+  if (gameMode === GAME_MODE.TIME) {
+    return `time ${timeSelected} english`;
+  } else {
+    return `words ${numberOfWords} english`;
+  }
 };

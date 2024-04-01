@@ -6,6 +6,7 @@
     margin-right: auto;
     gap: 0.5rem/* 8px */;
     animation: fade 300ms cubic-bezier(0.4, 0, 1, 1) both;
+    user-select: none;
 }
 
 .options-hide {
@@ -20,9 +21,6 @@
         opacity: 0;
     }
 }
-
-
-
 
 .content {
     display: flex;
@@ -144,6 +142,7 @@
     color: var(--color-secondary);
 }
 
+
 .game-options-buttons-not-selected {
     fill: var(--color-iconstext);
     color: var(--color-iconstext);
@@ -241,20 +240,15 @@
     transition-duration: 300ms;
 }
 
-.punctuation-mode-group:hover .punctuation-options-icons{
-    fill: var(--color-secondary);
-}
 
 .punctuation-mode-group:hover .punctuation-options-text, .punctuation-mode-group:hover .icons-punctuation{
     fill: var(--color-iconstext-hover);
     color: var(--color-iconstext-hover);
 }
 
-
 .punctuation-options-buttons-selected {
     fill: var(--color-secondary);
     color: var(--color-secondary);
-
 }
 
 .punctuation-options-buttons-not-selected {

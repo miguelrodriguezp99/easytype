@@ -33,6 +33,11 @@ const useTyping = (inputRef) => {
   const updateCaret = useCallback(() => {
     // TODO: Implement the logic to update the caret and the actual letter state
 
+    //If it's the last word, we don't need to update the caret
+    if (wordIndex === words.length - 1) {
+      return;
+    }
+
     // Update the last letter before moving to the next word
     let letterState;
     if (letterIndex < words[wordIndex].length) {
@@ -237,6 +242,7 @@ const useTyping = (inputRef) => {
       selectedWords,
       punctuationMode,
       gameMode,
+      restart,
     ]
   );
 

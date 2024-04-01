@@ -21,6 +21,10 @@
     transition-property: none;
 }
 
+.group:hover .footer-theme-text, .group:hover .theme-button {
+    color: var(--color-secondary);
+}
+
 .footer-theme-text {
     font-size: 12px;
     color: var(--color-iconstext);

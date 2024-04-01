@@ -1,4 +1,5 @@
 import "./styles/Header.css";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
   Crown,
@@ -12,16 +13,18 @@ import {
 import NotificationModal from "./Modal/NotificationModal";
 import { useAuthContext } from "../context/AuthContext";
 import useLogout from "../hooks/useLogout";
+import { useWordsStore } from "../store/useWords";
 
 const Header = () => {
   const { authUser } = useAuthContext();
   const { logout } = useLogout();
+  const { restart } = useWordsStore();
+  const navigate = useNavigate();
+
   const handleTitleClick = (e) => {
     e.preventDefault();
-    // e.stopPropagation();
-    // restart();
-    // navigate("/");
-    // setFocusedTrue();
+    restart();
+    navigate("/");
   };
 
   const handleLogOut = () => {
@@ -31,23 +34,19 @@ const Header = () => {
   return (
     <header className="header">
       <div className="keyboard-icon">
-        <Link to="/">
+        <button onClick={(e) => handleTitleClick(e)}>
           <KeyboardIcon />
-        </Link>
+        </button>
       </div>
-      <span
-        className="header-title"
-        onClick={(e) => {
-          handleTitleClick(e);
-        }}
-      >
+      <span className="header-title" onClick={(e) => handleTitleClick(e)}>
         typemonkey
       </span>
       <div className="header-icons">
-        <KeyboardSecondIcon />
-        <Link to="/">
-          <Crown />
-        </Link>
+        <div onClick={(e) => handleTitleClick(e)}>
+          <KeyboardSecondIcon />
+        </div>
+        <Crown />
+
         <Info />
         <Settings />
       </div>

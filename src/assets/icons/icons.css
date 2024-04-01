@@ -33,13 +33,21 @@
     width: 12px;
     height: auto;
     transition: all 300ms linear;
+
 }
+
+.volume:hover {
+    fill: var(--color-iconstext-hover);
+}
+
 
 .icons-game-mode {
     margin-top: 1px;
     width: 12px;
     height: auto;
     transition: all 300ms linear;
+
+
 }
 
 .icons-punctuation {
@@ -53,6 +61,11 @@
     fill: var(--color-iconstext);
     width: 18px;
     height: auto; 
+    transition: all 300ms linear;
+}
+
+.icons-result:hover {
+    fill: var(--color-iconstext-hover);
 }
 
 

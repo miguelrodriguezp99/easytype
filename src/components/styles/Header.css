@@ -6,6 +6,7 @@
     cursor: pointer;
     color: var(--color-text);
     width: 100%;
+    user-select: none;
 }
 
 header .keyboard-icon {

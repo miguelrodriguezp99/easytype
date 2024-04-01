@@ -23,11 +23,11 @@ const GameMode = () => {
         gameModeOptions.map((option, index) => (
           <div
             key={index}
-            className={`game-mode-group game-options-buttons 
+            className={` game-options-buttons 
             ${
               gameMode === option.value
                 ? "game-options-buttons-selected "
-                : "game-options-buttons-not-selected"
+                : "game-options-buttons-not-selected game-mode-group"
             }`}
             onClick={() => handleChangeGameMode(option.value)}
           >

@@ -1,5 +1,8 @@
 import { useWordsStore } from "../../store/useWords";
-import { gameModePunctuationOptions } from "../../utils/constants";
+import {
+  PUNCTUATION_MODE,
+  gameModePunctuationOptions,
+} from "../../utils/constants";
 
 const PunctuationOptions = () => {
   const { punctuationMode, setPunctuationMode } = useWordsStore();
@@ -7,7 +10,8 @@ const PunctuationOptions = () => {
   //   useGamePunctuationMode();
 
   const handleChangePunctuationMode = (mode) => {
-    setPunctuationMode(mode);
+    if (punctuationMode === mode) setPunctuationMode(PUNCTUATION_MODE.DISABLED);
+    else setPunctuationMode(mode);
   };
 
   return (
@@ -18,11 +22,11 @@ const PunctuationOptions = () => {
           <div
             key={index}
             onClick={() => handleChangePunctuationMode(option.value)}
-            className={`punctuation-options-buttons punctuation-mode-group
+            className={`punctuation-options-buttons 
           ${
             punctuationMode === option.value
               ? "punctuation-options-buttons-selected"
-              : "punctuation-options-buttons-not-selected"
+              : "punctuation-options-buttons-not-selected punctuation-mode-group"
           }`}
           >
             <div className="icon">

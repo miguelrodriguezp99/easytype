@@ -104,7 +104,10 @@ export default function ThemeModal() {
                 >
                   <div className="theme-info">
                     <p>{theme.name}</p>
-                    <div id={`colors-${theme.name}`} className={`circles ${theme.name}`}>
+                    <div
+                      id={`colors-${theme.name}`}
+                      className={`circles ${theme.name}`}
+                    >
                       <div className={`first-circle`}></div>
                       <div className={`second-circle`}></div>
                       <div className={`third-circle`}></div>
