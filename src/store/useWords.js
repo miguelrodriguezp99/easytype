@@ -62,6 +62,23 @@ export const useWordsStore = create((set, get) => ({
     });
   },
 
+  removeLastLetter: () => {
+    const wordIndex = get().wordIndex;
+    const letterIndex = get().letterIndex;
+    let newWords = get().words;
+
+    // we have to remove the last position of the array in words array
+    console.log(newWords);
+    const word = newWords[wordIndex];
+    if (!word) return;
+    const newWord = word.slice(0, letterIndex);
+    newWords[wordIndex] = newWord;
+
+    set({
+      words: newWords,
+    });
+  },
+
   setWords: () => {
     // Function to set the words with letters as objects (we make an array of objects with the letter
     // and the state of the letter) so words is an array of arrays of objects

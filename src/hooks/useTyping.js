@@ -26,6 +26,7 @@ const useTyping = (inputRef) => {
     gameMode,
     restart,
     addLetter,
+    removeLastLetter,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -180,10 +181,41 @@ const useTyping = (inputRef) => {
   ]);
 
   const zenModeBackspace = useCallback(() => {
-    console.log("Backspace pressed in ZEN mode");
-  }, []);
+    if (letterIndex === 0 && wordIndex === 0) {
+      return;
+    }
 
-  // ZEN MODE HANDLER
+    // Is not the first letter of word
+    if (letterIndex !== 0) {
+      setLetterIndex(letterIndex - 1);
+      removeLastLetter();
+      return;
+    }
+
+    // Is the first letter of the word
+    if (letterIndex === 0 && wordIndex > 0) {
+      markLetterWithState(wordIndex, 0, null);
+      markLetterWithState(
+        wordIndex - 1,
+        words[wordIndex - 1].length - 1,
+        "correct active last"
+      );
+      setLetterIndex(words[wordIndex - 1].length);
+      decrementWordIndex();
+      return;
+    }
+
+    console.log("Backspace pressed in ZEN mode");
+  }, [
+    letterIndex,
+    wordIndex,
+    removeLastLetter,
+    setLetterIndex,
+    decrementWordIndex,
+    words,
+    markLetterWithState,
+  ]);
+
   const zenModeKeyDownHandler = useCallback(
     (key) => {
       inputRef.current.focus();
@@ -242,14 +274,14 @@ const useTyping = (inputRef) => {
 
       if (appState === APP_STATE.FINISHED) return;
 
-      // ---- Spacebar ----
+      // ---- SPACEBAR ----
       if (key === " ") {
         defaultSpaceBar();
         resetLetterIndex();
         return;
       }
 
-      // ---- Backspace ----
+      // ---- BACKSPACE ----
       if (key === "Backspace") {
         defaultBackspace();
         return;
@@ -315,12 +347,10 @@ const useTyping = (inputRef) => {
       resetLetterIndex,
       defaultSpaceBar,
       markLetterWithState,
-      setLetterIndex,
-      getLetterState,
-      decrementWordIndex,
       selectedWords,
       punctuationMode,
       play,
+      defaultBackspace,
     ]
   );
 
