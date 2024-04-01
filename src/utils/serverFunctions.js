@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { GAME_MODE } from "../utils/constants";
 
 export const insertScore = async ({
@@ -21,19 +22,22 @@ export const insertScore = async ({
 
   // `https://${process.env.REACT_APP_API_URL}/scores`,
   try {
-    const res = await fetch(`http://localhost:5000/scores/scores`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        game_mode,
-        wpm,
-        accuracy,
-        timeSelected,
-        timePlayed,
-      }),
-    });
+    const res = await fetch(
+      `https://${process.env.REACT_APP_API_URL}/scores/scores`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          game_mode,
+          wpm,
+          accuracy,
+          timeSelected,
+          timePlayed,
+        }),
+      }
+    );
 
     const data = await res.json();
 
