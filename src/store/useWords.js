@@ -66,10 +66,8 @@ export const useWordsStore = create((set, get) => ({
     const wordIndex = get().wordIndex;
     const letterIndex = get().letterIndex;
     let newWords = get().words;
-
-    // we have to remove the last position of the array in words array
-    console.log(newWords);
     const word = newWords[wordIndex];
+
     if (!word) return;
     const newWord = word.slice(0, letterIndex);
     newWords[wordIndex] = newWord;

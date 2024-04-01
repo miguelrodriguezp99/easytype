@@ -30,18 +30,7 @@ const useTyping = (inputRef) => {
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
-
-  const focusWordZen = useCallback(() => {
-    const wordElement = document.getElementById(`word-${wordIndex}`);
-
-    if (wordElement) {
-      wordElement.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
-    }
-  }, [wordIndex]);
+  const INPUT_MAX_LENGTH = 35;
 
   // Update the caret when we press space
   const defaultSpaceBar = useCallback(() => {
@@ -204,8 +193,6 @@ const useTyping = (inputRef) => {
       decrementWordIndex();
       return;
     }
-
-    console.log("Backspace pressed in ZEN mode");
   }, [
     letterIndex,
     wordIndex,
@@ -218,12 +205,14 @@ const useTyping = (inputRef) => {
 
   const zenModeKeyDownHandler = useCallback(
     (key) => {
-      inputRef.current.focus();
       if (!isFocused) setFocusedTrue();
+
+      inputRef.current.maxLength = INPUT_MAX_LENGTH;
+      inputRef?.current?.focus();
+
       if (key === " ") {
         inputRef.current.value = "";
         zenModeSpaceBar();
-
         return;
       }
 
@@ -231,15 +220,15 @@ const useTyping = (inputRef) => {
         zenModeBackspace();
         return;
       }
-      addLetter(key);
 
+      if (inputRef.current.value.length === INPUT_MAX_LENGTH) return;
+      addLetter(key);
       markLetterWithState(wordIndex, letterIndex - 1, "correct");
       incrementLetterIndex();
-      focusWordZen();
+
       return;
     },
     [
-      focusWordZen,
       isFocused,
       setFocusedTrue,
       addLetter,
