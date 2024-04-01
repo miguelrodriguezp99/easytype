@@ -36,6 +36,7 @@ export const insertScore = async ({
           timeSelected,
           timePlayed,
         }),
+        credentials: "include",
       }
     );
 
