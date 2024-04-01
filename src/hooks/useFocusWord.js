@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useWordsStore } from "../store/useWords";
+import { GAME_MODE } from "../utils/constants";
 
 const useFocusWord = () => {
-  const { wordIndex } = useWordsStore();
+  const { wordIndex, gameMode } = useWordsStore();
 
   useEffect(() => {
+    if (gameMode === GAME_MODE.ZEN) return;
     const wordElement = document.getElementById(`word-${wordIndex}`);
     if (wordElement) {
       wordElement.scrollIntoView({
@@ -13,7 +15,7 @@ const useFocusWord = () => {
         inline: "center",
       });
     }
-  }, [wordIndex]);
+  }, [wordIndex, gameMode]);
 };
 
 export default useFocusWord;

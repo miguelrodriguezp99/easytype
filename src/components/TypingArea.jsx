@@ -39,29 +39,31 @@ const TypingArea = () => {
         <Timer />
       </time>
       <div className="blur-wrapper">
-        <div
-          id="paragraph"
-          className={`words-container ${!isFocused && "2blurred"}`}
-          ref={paragraphRef}
-        >
-          {words.map((wordObject, wordIndex) => (
-            <span
-              id={`word-${wordIndex}`}
-              key={`word-${wordIndex}`}
-              className="word"
-            >
-              {wordObject.map(({ letter, index, state }) => (
-                <span
-                  key={`${wordIndex}-${index}`}
-                  className={getLetterClass(state)}
-                >
-                  {letter}
-                </span>
-              ))}
-            </span>
-          ))}
+        <div className="words-wrapper">
+          <div
+            id="paragraph"
+            className={`words-container ${!isFocused && "2blurred"}`}
+            ref={paragraphRef}
+          >
+            {words.map((wordObject, wordIndex) => (
+              <span
+                id={`word-${wordIndex}`}
+                key={`word-${wordIndex}`}
+                className="word"
+              >
+                {wordObject.map(({ letter, index, state }) => (
+                  <span
+                    key={`${wordIndex}-${index}`}
+                    className={getLetterClass(state)}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </span>
+            ))}
+          </div>
+          <BlurEffect />
         </div>
-        <BlurEffect />
       </div>
 
       <input className="typing-area-input" autoFocus ref={inputRef}></input>

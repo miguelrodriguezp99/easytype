@@ -6,7 +6,6 @@ import {
   getRandomPunctuationWord,
   getRandomNumberWord,
 } from "../utils/helpers";
-import { insertScore } from "../utils/serverFunctions";
 
 export const useWordsStore = create((set, get) => ({
   selectedWords: 25,
@@ -39,6 +38,30 @@ export const useWordsStore = create((set, get) => ({
     set({ punctuationMode: mode });
   },
 
+  // Function used in zen mode to add a letter into the words array
+  addLetter: (letter) => {
+    const wordIndex = get().wordIndex;
+    const letterIndex = get().letterIndex;
+    // copia profunda de las palabras actuales para modificar
+    // let newWords = JSON.parse(JSON.stringify(get().words));
+    let newWords = get().words;
+
+    // Check if the array of words exists and create it if it doesn't
+    if (!newWords[wordIndex]) {
+      newWords[wordIndex] = [];
+    }
+    const newLetter = {
+      letter,
+      index: letterIndex,
+      state: "correct active last",
+    };
+    newWords[wordIndex][letterIndex] = newLetter;
+
+    set({
+      words: newWords,
+    });
+  },
+
   setWords: () => {
     // Function to set the words with letters as objects (we make an array of objects with the letter
     // and the state of the letter) so words is an array of arrays of objects
@@ -61,6 +84,12 @@ export const useWordsStore = create((set, get) => ({
         letterIndex: 0,
       });
     };
+
+    // if game mode is zen set the words to an empty array
+    if (get().gameMode === GAME_MODE.ZEN) {
+      set({ words: [] });
+      return;
+    }
 
     if (get().gameMode === GAME_MODE.QUOTE) {
       const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -133,9 +162,6 @@ export const useWordsStore = create((set, get) => ({
   setGameMode: (mode) => {
     set({ gameMode: mode });
   },
-
-  // Update function
-  update: (fn) => set(fn),
 
   setLetterIndex: (index) => {
     set({ letterIndex: index });
@@ -252,16 +278,6 @@ export const useWordsStore = create((set, get) => ({
 
       const accuracy = Math.floor((correctLetters / totalLetters) * 100);
       set({ accuracy });
-
-      insertScore({
-        gameMode: get().gameMode,
-        timeUsed: get().timeUsed,
-        timeSelected: get().timeSelected,
-        timeRemaining: get().timeRemaining,
-        selectedWords: get().selectedWords,
-        wpm: get().wpm,
-        accuracy: get().accuracy,
-      });
     }
   },
 }));

@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useWordsStore } from "../store/useWords";
 import { GAME_MODE } from "../utils/constants";
+import { insertScore } from "../utils/serverFunctions";
 
 const useGameEnd = () => {
   const {
@@ -10,8 +11,13 @@ const useGameEnd = () => {
     setAppStateRunning,
     gameMode,
     setAppStateFinished,
-    timeRemaining,
     calculateResults,
+    timeUsed,
+    timeSelected,
+    timeRemaining,
+    selectedWords,
+    wpm,
+    accuracy,
   } = useWordsStore();
 
   const hasFinished = useMemo(() => {
@@ -35,8 +41,29 @@ const useGameEnd = () => {
     if (hasFinished) {
       calculateResults();
       setAppStateFinished();
+      insertScore({
+        gameMode,
+        timeUsed,
+        timeSelected,
+        timeRemaining,
+        selectedWords,
+        wpm,
+        accuracy,
+      });
     }
-  }, [hasFinished, setAppStateRunning, setAppStateFinished, calculateResults]);
+  }, [
+    hasFinished,
+    setAppStateRunning,
+    setAppStateFinished,
+    calculateResults,
+    gameMode,
+    timeUsed,
+    timeSelected,
+    timeRemaining,
+    selectedWords,
+    wpm,
+    accuracy,
+  ]);
 };
 
 export default useGameEnd;
