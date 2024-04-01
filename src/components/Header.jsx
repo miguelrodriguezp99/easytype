@@ -39,7 +39,7 @@ const Header = () => {
         </button>
       </div>
       <span className="header-title" onClick={(e) => handleTitleClick(e)}>
-        typemonkey
+        easytype
       </span>
       <div className="header-icons">
         <div onClick={(e) => handleTitleClick(e)}>

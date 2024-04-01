@@ -27,6 +27,7 @@ const useTyping = (inputRef) => {
     restart,
     addLetter,
     removeLastLetter,
+    setAppStateFinished,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -204,7 +205,8 @@ const useTyping = (inputRef) => {
   ]);
 
   const zenModeKeyDownHandler = useCallback(
-    (key) => {
+    (event) => {
+      const key = event.key;
       if (!isFocused) setFocusedTrue();
 
       inputRef.current.maxLength = INPUT_MAX_LENGTH;
@@ -218,6 +220,12 @@ const useTyping = (inputRef) => {
 
       if (key === "Backspace") {
         zenModeBackspace();
+        return;
+      }
+
+      // if pressed keys are shift and enter at the same time
+      if (event.shiftKey && key === "Enter") {
+        setAppStateFinished();
         return;
       }
 
@@ -239,11 +247,13 @@ const useTyping = (inputRef) => {
       zenModeSpaceBar,
       zenModeBackspace,
       inputRef,
+      setAppStateFinished,
     ]
   );
 
   const timeAndWordsModeKeyDownHandler = useCallback(
-    (key) => {
+    (event) => {
+      const key = event.key;
       const currentWord = words[wordIndex];
       const currentLetter = currentWord[letterIndex];
       const currentLetterValue = currentLetter?.letter;
@@ -345,16 +355,16 @@ const useTyping = (inputRef) => {
 
   const keyDownHandler = useCallback(
     (event) => {
-      const { key, code } = event;
+      const { code } = event;
       if (!isKeyboardCodeAllowed(code)) return;
 
       // ZEN MODE
       if (gameMode === GAME_MODE.ZEN) {
-        zenModeKeyDownHandler(key);
+        zenModeKeyDownHandler(event);
       }
 
       if (gameMode !== GAME_MODE.ZEN) {
-        timeAndWordsModeKeyDownHandler(key);
+        timeAndWordsModeKeyDownHandler(event);
       }
     },
     [gameMode, timeAndWordsModeKeyDownHandler, zenModeKeyDownHandler]
