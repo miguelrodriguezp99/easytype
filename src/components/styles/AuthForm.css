@@ -37,6 +37,7 @@
     padding-right: 0.5rem/* 8px */;
     background-color: var(--color-tertiary);
     caret-color: var(--color-secondary);
+    color: var(--color-iconstext-hover);
 }
 
 .auth-form-input::placeholder {

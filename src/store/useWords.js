@@ -55,6 +55,7 @@ export const useWordsStore = create((set, get) => ({
       index: letterIndex,
       state: "correct active last",
     };
+
     newWords[wordIndex][letterIndex] = newLetter;
 
     set({
@@ -102,7 +103,13 @@ export const useWordsStore = create((set, get) => ({
 
     // if game mode is zen set the words to an empty array
     if (get().gameMode === GAME_MODE.ZEN) {
-      set({ words: [] });
+      // Set words with the first letter empty but active
+      set({
+        words: [[{ letter: " ", index: 0, state: "active" }]],
+        wordIndex: 0,
+        letterIndex: 0,
+      });
+
       return;
     }
 

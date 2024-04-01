@@ -177,6 +177,7 @@ const useTyping = (inputRef) => {
 
     // Is not the first letter of word
     if (letterIndex !== 0) {
+      markLetterWithState(wordIndex, letterIndex - 2, "correct active last");
       setLetterIndex(letterIndex - 1);
       removeLastLetter();
       return;
@@ -232,6 +233,7 @@ const useTyping = (inputRef) => {
       if (inputRef.current.value.length === INPUT_MAX_LENGTH) return;
       addLetter(key);
       markLetterWithState(wordIndex, letterIndex - 1, "correct");
+      markLetterWithState(wordIndex, letterIndex, "correct active last");
       incrementLetterIndex();
 
       return;
