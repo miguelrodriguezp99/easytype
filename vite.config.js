@@ -9,7 +9,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://typemonkey-app.vercel.app",
+        target: "https://miguel-main-server.vercel.app",
         changeOrigin: true,
       },
     },
