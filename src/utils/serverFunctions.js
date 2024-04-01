@@ -6,28 +6,34 @@ export const insertScore = async ({
   timeUsed,
   timeSelected,
   timeRemaining,
-  numberOfWords,
+  selectedWords,
   wpm,
   accuracy,
 }) => {
-  let timePlayed = 0;
-  let game_mode = "";
-  if (gameMode === GAME_MODE.TIME) {
-    timePlayed = timeSelected - timeRemaining;
-    game_mode = `time ${timeSelected}`;
-  } else {
-    timePlayed = timeUsed;
-    game_mode = `words ${numberOfWords}`;
+  const timePlayed =
+    gameMode === GAME_MODE.TIME ? timeSelected - timeRemaining : timeUsed;
+  const game_mode = `${gameMode === GAME_MODE.TIME ? "time" : "words"} ${
+    gameMode === GAME_MODE.TIME ? timeSelected : selectedWords
+  }`;
+
+  const authUserString = localStorage.getItem("authUser");
+  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const token = authUser?.jwt;
+
+  if (!token) {
+    return;
   }
 
-  // `https://${process.env.REACT_APP_API_URL}/scores`,
+  //  https://miguel-main-server.vercel.app/scores/scores   //local
+  //  https://${import.meta.env.VITE_API_URL}/scores/scores //production
   try {
-    const res = await fetch(
-      `https://${import.meta.env.VITE_API_URL}/scores/scores`,
+    const response = await fetch(
+      `https://miguel-main-server.vercel.app/scores/scores`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           game_mode,
@@ -40,13 +46,12 @@ export const insertScore = async ({
       }
     );
 
-    const data = await res.json();
+    const data = await response.json();
 
     if (data.error) {
-      //toast.error(data.error);
       return;
     }
   } catch (error) {
-    //toast.error("An error saving the score. Sorry!");
+    console.log("An error occurred while saving your score.");
   }
 };

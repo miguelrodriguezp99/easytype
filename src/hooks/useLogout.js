@@ -9,7 +9,8 @@ const useLogout = () => {
 
   const logout = async () => {
     setLoading(true);
-    //`https://${process.env.REACT_APP_API_URL}/auth/login`
+    // https://${import.meta.env.VITE_API_URL}/auth/logout
+    // https://miguel-main-server.vercel.app/auth/logout
     try {
       const res = await fetch(
         `https://${import.meta.env.VITE_API_URL}/auth/logout`,
