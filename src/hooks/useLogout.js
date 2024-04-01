@@ -12,7 +12,7 @@ const useLogout = () => {
     //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
       const res = await fetch(
-        `https://${process.env.REACT_APP_API_URL}/auth/logout`,
+        `https://${import.meta.env.VITE_API_URL}/auth/logout`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

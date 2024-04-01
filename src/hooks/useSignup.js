@@ -26,7 +26,7 @@ const useSignup = () => {
     //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
       const res = await fetch(
-        `https://${process.env.REACT_APP_API_URL}/auth/signup`,
+        `https://${import.meta.env.VITE_API_URL}/auth/signup`,
         {
           method: "POST",
           headers: {
