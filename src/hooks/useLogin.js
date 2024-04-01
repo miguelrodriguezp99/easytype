@@ -15,7 +15,7 @@ const useLogin = () => {
     //`https://${process.env.REACT_APP_API_URL}/auth/login`
     try {
       const res = await fetch(
-        `https://${process.env.REACT_APP_API_URL}/auth/login`,
+        `https://${process.env.VITE_API_URL}/auth/login`,
         {
           method: "POST",
           headers: {

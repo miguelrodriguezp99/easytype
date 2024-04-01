@@ -23,7 +23,7 @@ export const insertScore = async ({
   // `https://${process.env.REACT_APP_API_URL}/scores`,
   try {
     const res = await fetch(
-      `https://${process.env.REACT_APP_API_URL}/scores/scores`,
+      `https://${process.env.VITE_API_URL}/scores/scores`,
       {
         method: "POST",
         headers: {
