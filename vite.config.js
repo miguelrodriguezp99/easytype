@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -11,5 +12,8 @@ export default defineConfig({
         target: "http://localhost:5000/",
       },
     },
+  },
+  define: {
+    __APP_ENV__: process.env.VITE_VERCEL_ENV,
   },
 });
