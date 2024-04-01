@@ -38,15 +38,8 @@ const useGameEnd = () => {
     if (hasFinished) {
       calculateResults();
       setAppStateFinished();
-      sendScore();
     }
-  }, [
-    hasFinished,
-    setAppStateRunning,
-    setAppStateFinished,
-    calculateResults,
-    sendScore,
-  ]);
+  }, [hasFinished, setAppStateRunning, setAppStateFinished, calculateResults]);
 };
 
 export default useGameEnd;
