@@ -27,8 +27,9 @@
   }
 
 .words-wrapper {
-  height: 115px;
+  height: 120px;
   overflow: hidden;
+  min-height: 120px;
 }
 
 .words-container {
