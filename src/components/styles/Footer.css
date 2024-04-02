@@ -18,7 +18,7 @@ footer {
 .footer-links{
     display: grid;
     grid-auto-flow: column;
-    gap: 16px;
+ 
     width: fit-content;
 }
 
@@ -50,14 +50,14 @@ footer {
     display: grid;
     grid-auto-flow: column;
     user-select: none;
-    gap: 16px;
     justify-content: end;
     width: 100%;
+    gap: 0.5rem/* 8px */;
 }
 
 @media (max-width: 600px) {
     .footer-modals {
-        
+        gap: 0;
         grid-template-rows:  1fr 1fr ;
         grid-template-columns:  auto ;
         grid-auto-flow: row; 
@@ -71,6 +71,7 @@ footer {
     flex-direction: row;
     gap: 0.25rem/* 4px */;
     align-items: center;
+    padding: 0.25em 0.5em; /* 4px 8px */
 }
 
 .footer-icon-text {
@@ -129,6 +130,25 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+.volume-button {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem/* 4px */;
+    
+}
+
+.volume-button-text {
+    color: var(--color-iconstext);
+    transition: all 300ms linear;
+}
+
+.volume-button:hover .volume, .volume-button:hover .volume-button-text{
+    fill: var(--color-iconstext-hover);
+    color: var(--color-secondary);
+}
+
 
 
 

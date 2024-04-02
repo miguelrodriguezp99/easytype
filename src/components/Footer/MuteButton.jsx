@@ -19,10 +19,12 @@ const MuteButton = () => {
       {muted ? (
         <button onClick={handleToggleMute} className="volume-button">
           <VolumeSilence />
+          <div className="volume-button-text">muted</div>
         </button>
       ) : (
         <button onClick={handleToggleMute} className="volume-button">
           <Volume />
+          <div className="volume-button-text">volume</div>
         </button>
       )}
     </div>
