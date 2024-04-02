@@ -39,11 +39,12 @@ const TypingArea = () => {
         <Timer />
       </time>
       <div className="blur-wrapper">
-        <div className="words-wrapper" onClick={inputRef?.current?.focus()}>
+        <div className="words-wrapper">
           <div
             id="paragraph"
             className={`words-container ${!isFocused && "2blurred"}`}
             ref={paragraphRef}
+            onClick={inputRef?.current?.focus()}
           >
             {words.map((wordObject, wordIndex) => (
               <span
