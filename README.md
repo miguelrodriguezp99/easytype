@@ -1,16 +1,16 @@
-# TypingPracticeApp
+# EasyType
 
 ![704shots_so](https://github.com/miguelrodriguezp99/typing-web-app/assets/72866796/5de5208d-13de-435b-bb7c-38633b4db33e)
 
 ## Introduction
 
-The TypingPracticeApp is a state-of-the-art responsive web application, originally inspired by the eminent MonkeyType platform. Crafted for educational purposes, it presents an enriched environment for users aiming to advance their typing proficiency. This application accommodates a wide array of devices, including smartphones, tablets, and desktops, ensuring a seamless user experience. It encompasses a dedicated server architecture for user account management, enabling a tailored typing practice with detailed feedback on performance metrics such as speed, accuracy, and more, after each test session.
+The EasyType is a state-of-the-art responsive web application, originally inspired by the eminent MonkeyType platform. Crafted for educational purposes, it presents an enriched environment for users aiming to advance their typing proficiency. This application accommodates a wide array of devices, including smartphones, tablets, and desktops, ensuring a seamless user experience. It encompasses a dedicated server architecture for user account management, enabling a tailored typing practice with detailed feedback on performance metrics such as speed, accuracy, and more, after each test session.
 
 The genesis of this application was as a frontend-exclusive project, personally developed by me. Despite its roots in the Monkeytype application, it has since evolved. You can explore the initial frontend development repository here: [\[Frontend\]](https://github.com/miguelrodriguezp99/typing-web-frontend)
 
 ## Features
 
-- **Responsive Design:** The TypingPracticeApp is designed to provide an optimal experience across all device types, ensuring users enjoy a consistent and engaging practice environment.
+- **Responsive Design:** The EasyType is designed to provide an optimal experience across all device types, ensuring users enjoy a consistent and engaging practice environment.
 
 - **Customizable Typing Tests:** Users can personalize their typing tests by selecting their preferred number of words, catering to various skill levels and objectives.
 
