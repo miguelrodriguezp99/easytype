@@ -6,9 +6,15 @@ import "./../styles/Options.css";
 import { GAME_MODE } from "../../utils/constants";
 
 const GameMode = () => {
-  const { gameMode, setGameMode } = useWordsStore();
+  const { gameMode, setGameMode, setSelectedWords } = useWordsStore();
 
   const handleChangeGameMode = (mode) => {
+    if (mode === GAME_MODE.TIME) {
+      setSelectedWords(75);
+    }
+    if (mode === GAME_MODE.WORDS) {
+      setSelectedWords(25);
+    }
     setGameMode(mode);
   };
 

@@ -9,7 +9,7 @@ const useGameStart = () => {
     letterIndex,
     setAppStateRunning,
     gameMode,
-    setSelectedWords,
+
     selectedWords,
     restart,
     timeSelected,
@@ -26,13 +26,6 @@ const useGameStart = () => {
       setAppStateRunning();
     }
   }, [wordIndex, letterIndex, setAppStateRunning]);
-
-  // If the game mode is time, set the selected words to 75
-  useEffect(() => {
-    if (gameMode === GAME_MODE.TIME) {
-      setSelectedWords(75);
-    }
-  }, [gameMode, setSelectedWords]);
 
   // Conditions to restart the game if something changes
   useEffect(() => {

@@ -27,7 +27,6 @@ const Footer = () => {
 
         <div className="footer-modals">
           <MuteButton />
-
           <SoundModal />
           <ThemeModal />
         </div>

@@ -179,13 +179,15 @@
 
 }
 
-.number-of-words-options-text.selected {
-    color: var(--color-selected);
+.selected {
+    color: var(--color-secondary);
 }
 
-.number-of-words-options-text.not-selected {
+.not-selected {
     color: var(--color-iconstext);
 }
+
+
 
 .not-selected:hover {
     color: var(--color-iconstext-hover);
