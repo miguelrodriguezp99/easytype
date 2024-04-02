@@ -11,7 +11,6 @@ const useFocusWord = () => {
       wordElement.scrollIntoView({
         behavior: "smooth",
         block: "center",
-        inline: "center",
       });
     }
   }, [wordIndex, gameMode, letterIndex]);
