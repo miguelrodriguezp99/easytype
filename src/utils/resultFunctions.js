@@ -51,7 +51,11 @@ export const takeScreenshot = () => {
 export const getTestType = (gameMode, timeSelected, numberOfWords) => {
   if (gameMode === GAME_MODE.TIME) {
     return `time ${timeSelected} english`;
-  } else {
+  } else if (gameMode === GAME_MODE.WORDS) {
     return `words ${numberOfWords} english`;
+  } else if (gameMode === GAME_MODE.QUOTE) {
+    return `quote`;
+  } else if (gameMode === GAME_MODE.ZEN) {
+    return `zen`;
   }
 };

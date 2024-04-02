@@ -10,7 +10,7 @@ import {
 export const useWordsStore = create((set, get) => ({
   selectedWords: 25,
   previousSelectedWords: 15, // Used to switch between time and words mode
-  timeSelected: 30,
+  timeSelected: 3,
   timeRemaining: 30,
   timeUsed: 0,
   words: [],
@@ -300,6 +300,65 @@ export const useWordsStore = create((set, get) => ({
 
       const accuracy = Math.floor((correctLetters / totalLetters) * 100);
       set({ accuracy });
+
+      return;
+    }
+
+    if (get().gameMode === GAME_MODE.ZEN) {
+      const wordsWritten = get().words.length;
+      const wpm = Math.floor(wordsWritten / (get().timeUsed / 60));
+
+      set({ wpm });
+      set({ accuracy: 100 });
+      return;
+    }
+
+    // Results for the game mode TIME
+    if (get().gameMode === GAME_MODE.TIME) {
+      let correctLetters = 0;
+      let incorrectLetters = 0;
+      let totalLetters = 0;
+      let totalWords = 0;
+
+      // Check correct letters until the letterIndex
+      for (let i = 0; i <= get().wordIndex; i++) {
+        for (let j = 0; j < get().words[i].length; j++) {
+          if (
+            get().words[i][j].state === "correct" ||
+            get().words[i][j].state === "correct active last"
+          ) {
+            correctLetters += 1;
+            totalLetters += 1;
+          } else if (get().words[i][j].state === "incorrect") {
+            incorrectLetters += 1;
+            totalLetters += 1;
+          }
+        }
+        if (
+          i < get().wordIndex ||
+          (i === get().wordIndex &&
+            get().letterIndex === get().words[i].length - 1)
+        ) {
+          totalWords++;
+        }
+      }
+      set({ correctLetters });
+      set({ incorrectLetters });
+
+      // Calculate the wpm
+      const averageWordLength = totalWords > 0 ? totalLetters / totalWords : 5; // Usa 5 como fallback si totalWords es 0
+      const wpm = Math.floor(
+        correctLetters / averageWordLength / (get().timeSelected / 60)
+      );
+
+      set({ wpm });
+
+      const accuracy = Math.floor(
+        (correctLetters / (incorrectLetters + correctLetters)) * 100
+      );
+      set({ accuracy });
+
+      return;
     }
   },
 }));

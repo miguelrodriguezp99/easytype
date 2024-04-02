@@ -1,0 +1,17 @@
+.timer-container{
+    position: relative;
+    display: flex;
+}
+
+.timer-zen-guide{
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    justify-content: center;
+    color: var(--color-iconstext);
+    font-size: 0.9rem;
+    font-weight: 500;
+}

@@ -28,6 +28,7 @@ const useTyping = (inputRef) => {
     addLetter,
     removeLastLetter,
     setAppStateFinished,
+    calculateResults,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -224,8 +225,9 @@ const useTyping = (inputRef) => {
         return;
       }
 
-      // if pressed keys are shift and enter at the same time
+      // Shift + Enter
       if (event.shiftKey && key === "Enter") {
+        calculateResults();
         setAppStateFinished();
         return;
       }
@@ -250,6 +252,7 @@ const useTyping = (inputRef) => {
       zenModeBackspace,
       inputRef,
       setAppStateFinished,
+      calculateResults,
     ]
   );
 

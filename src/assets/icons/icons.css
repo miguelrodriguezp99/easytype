@@ -64,6 +64,13 @@
     transition: all 300ms linear;
 }
 
+.icons-zen-result {
+    fill: var(--color-iconstext);
+    width: 18px;
+    height: auto; 
+
+}
+
 .icons-result:hover {
     fill: var(--color-iconstext-hover);
 }
