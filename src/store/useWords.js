@@ -6,11 +6,12 @@ import {
   getRandomPunctuationWord,
   getRandomNumberWord,
 } from "../utils/helpers";
+import { insertScore } from "../utils/serverFunctions";
 
 export const useWordsStore = create((set, get) => ({
   selectedWords: 25,
   previousSelectedWords: 15, // Used to switch between time and words mode
-  timeSelected: 3,
+  timeSelected: 30,
   timeRemaining: 30,
   timeUsed: 0,
   words: [],
@@ -260,20 +261,12 @@ export const useWordsStore = create((set, get) => ({
     set({ appState: APP_STATE.STOPPED });
     set({ wordIndex: 0 });
     set({ letterIndex: 0 });
+    set({ correctLetters: 0 });
+    set({ incorrectLetters: 0 });
   },
 
   calculateResults: () => {
-    const calculateWPM = () => {
-      const minutes = get().timeUsed / 60;
-      const averageWordLength =
-        get().wordsAsString.length / get().selectedWords;
-      const wpm = Math.floor(
-        get().correctLetters / averageWordLength / minutes
-      );
-      return wpm;
-    };
-
-    // Results for the game mode WORDS and QUOTE
+    // WORDS || QUOTE
     if (
       get().gameMode === GAME_MODE.WORDS ||
       get().gameMode === GAME_MODE.QUOTE
@@ -292,28 +285,41 @@ export const useWordsStore = create((set, get) => ({
 
       const totalLetters = get().wordsAsString.length;
       const incorrectLetters = totalLetters - correctLetters;
-      set({ correctLetters });
-      set({ incorrectLetters });
-
-      const wpm = calculateWPM();
-      set({ wpm });
-
+      const minutes = get().timeUsed / 60;
+      const averageWordLength =
+        get().wordsAsString.length / get().selectedWords;
+      const wpm = Math.floor(correctLetters / averageWordLength / minutes);
       const accuracy = Math.floor((correctLetters / totalLetters) * 100);
-      set({ accuracy });
 
-      return;
+      set((state) => ({
+        ...state,
+        correctLetters,
+        incorrectLetters,
+        wpm,
+        accuracy,
+      }));
     }
 
+    // ZEN
     if (get().gameMode === GAME_MODE.ZEN) {
       const wordsWritten = get().words.length;
       const wpm = Math.floor(wordsWritten / (get().timeUsed / 60));
 
+      // Calculate the correct letters (all the letters are correct)
+      let totalLetters = 0;
+      get().words.forEach((word) => {
+        word.forEach(() => {
+          totalLetters += 1;
+        });
+      });
+
       set({ wpm });
       set({ accuracy: 100 });
-      return;
+      set({ correctLetters: totalLetters });
+      set({ incorrectLetters: 0 });
     }
 
-    // Results for the game mode TIME
+    // TIME
     if (get().gameMode === GAME_MODE.TIME) {
       let correctLetters = 0;
       let incorrectLetters = 0;
@@ -357,9 +363,17 @@ export const useWordsStore = create((set, get) => ({
         (correctLetters / (incorrectLetters + correctLetters)) * 100
       );
       set({ accuracy });
-
-      return;
     }
+
+    insertScore({
+      gameMode: get().gameMode,
+      timeUsed: get().timeUsed,
+      timeSelected: get().timeSelected,
+      timeRemaining: get().timeRemaining,
+      selectedWords: get().selectedWords,
+      wpm: get().wpm,
+      accuracy: get().accuracy,
+    });
   },
 }));
 
