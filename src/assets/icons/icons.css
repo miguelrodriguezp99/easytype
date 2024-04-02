@@ -11,6 +11,13 @@
     transition: all 300ms linear;
 }
 
+@media (max-width: 400px) {
+    .icons-header {
+        width: 16px;
+        height: 16px;
+    }
+}
+
 .icons-header:hover {
     fill: var(--color-iconstext-hover);   
 }
@@ -22,10 +29,7 @@
     transition: all 300ms linear;
 }
 
-.bell-icon {
-    width: 24px;
-    height: 24px;
-}
+
 
 
 .icons-footer {
@@ -74,6 +78,39 @@
 .icons-result:hover {
     fill: var(--color-iconstext-hover);
 }
+
+
+.icons-header {
+    fill: var(--color-iconstext);
+    width: 20px;
+    height: 20px;
+    transition: all 300ms linear;
+}
+
+
+
+.icons-header:hover {
+    fill: var(--color-iconstext-hover);   
+}
+
+
+/* INDIVIDUAL SIZE FOR EACH ICON */
+.settings-icon {
+    width: 17px;
+    height: auto;
+}
+
+.info-icon {
+    width: 7px;
+    height: auto;
+}
+
+.bell-icon {
+    width: 24px;
+    height: 24px;
+}
+
+
 
 
 

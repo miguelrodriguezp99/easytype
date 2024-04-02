@@ -92,6 +92,21 @@ export const footerLinks = [
     text: "Twitter",
     href: "https://twitter.com/miguelrguez99",
   },
+  {
+    icon: X,
+    text: "Terms",
+    href: "https://twitter.com/miguelrguez99",
+  },
+  {
+    icon: X,
+    text: "Security",
+    href: "https://twitter.com/miguelrguez99",
+  },
+  {
+    icon: X,
+    text: "Privacy",
+    href: "https://twitter.com/miguelrguez99",
+  },
 ];
 
 export const gameModePunctuationOptions = [

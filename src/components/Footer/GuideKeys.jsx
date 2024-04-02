@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import "./../styles/Footer.css";
 const GuideKeys = ({ text }) => {
   return (
     <div className="guide-key" style={{ width: "fit-content" }}>

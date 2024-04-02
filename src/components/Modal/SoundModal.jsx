@@ -2,11 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import "../styles/SoundModal.css";
 import { useSoundsStore } from "../../store/useSound";
 import { SOUND_MAP, getSoundName } from "../../utils/soundsMap";
-import {
-  MusicalNote,
-  Volume,
-  VolumeSilence,
-} from "../../assets/icons/FooterIcons";
+import { MusicalNote } from "../../assets/icons/FooterIcons";
 import useSound from "use-sound";
 
 export default function SoundModal() {
@@ -16,7 +12,7 @@ export default function SoundModal() {
     currentSound,
     volume,
     setCurrentSound,
-    muted,
+
     setMuteOn,
     setMuteOff,
   } = useSoundsStore();
@@ -30,16 +26,6 @@ export default function SoundModal() {
       setMuteOn();
     }
   }, [setMuteOff, setMuteOn]);
-
-  const handleToggleMute = () => {
-    if (muted) {
-      setMuteOff();
-      localStorage.setItem("muted", "false");
-    } else {
-      setMuteOn();
-      localStorage.setItem("muted", "true");
-    }
-  };
 
   const closeModal = useCallback(() => {
     setAnimationClass("");
@@ -82,16 +68,6 @@ export default function SoundModal() {
   return (
     <>
       <div className="footer-sound-icons">
-        {muted ? (
-          <button onClick={handleToggleMute} className="volume-button">
-            <VolumeSilence />
-          </button>
-        ) : (
-          <button onClick={handleToggleMute} className="volume-button">
-            <Volume />
-          </button>
-        )}
-
         <button onClick={toggleModal} className="sound-modal-button group">
           <MusicalNote />
           <p className="footer-volume-text">{actualNameSong}</p>
