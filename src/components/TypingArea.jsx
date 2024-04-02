@@ -47,7 +47,7 @@ const TypingArea = () => {
         <div className="words-wrapper">
           <div
             id="paragraph"
-            className={`words-container ${!isFocused && "2blurred"}`}
+            className={`words-container ${!isFocused && "blurred"}`}
             ref={paragraphRef}
             onClick={handleParagraphClick}
           >

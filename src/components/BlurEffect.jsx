@@ -12,7 +12,7 @@ const BlurEffect = () => {
   return (
     <>
       <div
-        className={`blur-text ${!isFocused && "2text-blur-appear"}`}
+        className={`blur-text ${!isFocused && "text-blur-appear"}`}
         onClick={(e) => handleSetFocusedTrue(e)}
       >
         <Cursor props="w-5 h-5 fill-white" />
