@@ -13,7 +13,7 @@ const TypingArea = () => {
 
   useTyping(inputRef, paragraphRef);
 
-  // Función para determinar la clase basada en el estado de la letra
+  // Function to determine the class based on the letter's state
   const getLetterClass = (state) => {
     switch (state) {
       case "correct":
@@ -31,6 +31,11 @@ const TypingArea = () => {
     }
   };
 
+  // Function to handle paragraph click and focus the input on mobile
+  const handleParagraphClick = () => {
+    inputRef.current && inputRef.current.focus();
+  };
+
   return (
     <main
       className={`typing-area ${appState === APP_STATE.FINISHED && "hidden"}`}
@@ -44,7 +49,7 @@ const TypingArea = () => {
             id="paragraph"
             className={`words-container ${!isFocused && "2blurred"}`}
             ref={paragraphRef}
-            onClick={inputRef?.current?.focus()}
+            onClick={handleParagraphClick}
           >
             {words.map((wordObject, wordIndex) => (
               <span
