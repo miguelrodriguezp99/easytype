@@ -3,7 +3,6 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    cursor: pointer;
     color: var(--color-text);
     width: 100%;
     user-select: none;
@@ -17,6 +16,7 @@ header .keyboard-icon {
 
 header .header-title {
     display: none; /* Hide the header */
+    cursor: pointer;
 }
 
 /* Media query */
@@ -33,9 +33,7 @@ header .header-title {
     display: flex;
     align-items: center;
     justify-items: center;
-
-
-    gap: 24px;
+    gap: 12px;
     margin-top: 6px;
     margin-left: 8px;
     flex: 1;
@@ -43,10 +41,9 @@ header .header-title {
 
 @media (max-width: 400px) {
     .header-icons {
-        gap: 14px;
+        gap: 6px;
     }
 }
-
 
 .profile-icons{
     display: flex;
@@ -76,4 +73,15 @@ header .header-title {
     fill: var(--color-iconstext-hover);
     color: #e2b714;
 }
+
+.header-button-div {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.header-button-div:hover .icons-header {
+    fill: var(--color-iconstext-hover)
+}
+
+
 

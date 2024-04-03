@@ -20,6 +20,28 @@ const Header = () => {
   const { logout } = useLogout();
   const { restart } = useWordsStore();
   const navigate = useNavigate();
+  const headerIcons = [
+    {
+      id: 1,
+      icon: KeyboardSecondIcon,
+      fn: () => navigate("/"),
+    },
+    {
+      id: 2,
+      icon: Crown,
+      fn: () => navigate("/leaderboard"),
+    },
+    {
+      id: 3,
+      icon: Info,
+      fn: () => navigate("/about"),
+    },
+    {
+      id: 4,
+      icon: Settings,
+      fn: () => navigate("/settings"),
+    },
+  ];
 
   const handleTitleClick = (e) => {
     e.preventDefault();
@@ -42,13 +64,11 @@ const Header = () => {
         easytype
       </span>
       <div className="header-icons">
-        <div onClick={(e) => handleTitleClick(e)}>
-          <KeyboardSecondIcon />
-        </div>
-        <Crown />
-
-        <Info />
-        <Settings />
+        {headerIcons.map((icon) => (
+          <div key={icon.id} onClick={icon.fn} className="header-button-div">
+            <icon.icon />
+          </div>
+        ))}
       </div>
 
       <div className="profile-icons">

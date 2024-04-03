@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useWordsStore } from "../store/useWords";
-import { APP_STATE, GAME_MODE } from "../utils/constants";
+import { APP_STATE } from "../utils/constants";
 
 const useGameStart = () => {
   const {
@@ -9,7 +9,6 @@ const useGameStart = () => {
     letterIndex,
     setAppStateRunning,
     gameMode,
-
     selectedWords,
     restart,
     timeSelected,

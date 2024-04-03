@@ -1,7 +1,7 @@
 .icon-keyboard {
     width: 40px;
     height: auto;
-    fill: var(--color-selected);
+    fill: var(--color-secondary);
 }
 
 .icons-header {

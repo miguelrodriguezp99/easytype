@@ -5,7 +5,16 @@ import {
   Quote,
   Tool,
 } from "../assets/icons/HeaderIcons";
-import { Mail, Support, Code, Discord, X } from "../assets/icons/FooterIcons";
+import {
+  Mail,
+  Support,
+  Code,
+  Discord,
+  X,
+  Terms,
+  Security,
+  Privacy,
+} from "../assets/icons/FooterIcons";
 import { AtSign, Hashtag } from "../assets/icons/HeaderIcons";
 import {
   Ad,
@@ -93,17 +102,17 @@ export const footerLinks = [
     href: "https://twitter.com/miguelrguez99",
   },
   {
-    icon: X,
+    icon: Terms,
     text: "Terms",
     href: "https://twitter.com/miguelrguez99",
   },
   {
-    icon: X,
+    icon: Security,
     text: "Security",
     href: "https://twitter.com/miguelrguez99",
   },
   {
-    icon: X,
+    icon: Privacy,
     text: "Privacy",
     href: "https://twitter.com/miguelrguez99",
   },
