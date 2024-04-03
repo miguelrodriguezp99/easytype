@@ -68,11 +68,11 @@
 }
 
 .letter.correct {
-    color: var(--color-iconstext-hover);
+    color: var(--color-correct-letter);
 }
 
 .letter.incorrect {
-    color: red;
+    color: var(--color-incorrect-letter);
 }
 
 

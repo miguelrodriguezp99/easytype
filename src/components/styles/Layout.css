@@ -19,11 +19,6 @@
     width: 100%;
 }
 
-
-/* 
-primary: background
-*/
-
 :root {
     --color-primary: #333; 
     --color-secondary: #e2b714;
@@ -43,7 +38,8 @@ primary: background
     --color-tertiary: #101111;
     --color-iconstext: #646669;
     --color-iconstext-hover: #d1d0c5;
-
+    --color-incorrect-letter: red;
+    --color-correct-letter: #d1d0c5;
 }
   
 .light {
@@ -52,6 +48,8 @@ primary: background
     --color-tertiary: #aaa7a7;
     --color-iconstext: #4d4d4d;
     --color-iconstext-hover: black;
+    --color-incorrect-letter: red;
+    --color-correct-letter: black;
 
 }
 
@@ -61,6 +59,8 @@ primary: background
     --color-tertiary: #2c2e31;
     --color-iconstext: #646669;
     --color-iconstext-hover: #ddd;
+    --color-incorrect-letter: red;
+    --color-correct-letter: #ddd;
 
 }
   
@@ -70,6 +70,14 @@ primary: background
     --color-tertiary: #18214c;
     --color-iconstext: #637199;
     --color-iconstext-hover: white;
+    --color-incorrect-letter: #02d3b0;
+    --color-correct-letter: #e51376;
+
+    .letter.correct, .acc-wpm-value, .stats-bottom {
+        animation: trance 5s linear infinite;
+    };
+
+
 }
   
 .eva-04 {
@@ -78,19 +86,22 @@ primary: background
     --color-tertiary: #226126;
     --color-iconstext: white;
     --color-iconstext-hover: #73d378;
-
+    --color-incorrect-letter: red;
+    --color-correct-letter: #73d378;
 }
+
+@keyframes trance {
+    0% {
+      color: #e51376;
+    }
+    50% {
+      color: #0e77ee;
+    }
+    100% {
+      color: #e51376;
+    }
+  }
+
+
+
   
-  
-  /* 
-    --color-primary: background
-    --color-secondary: timer y results
-    --color-tertiary: subheader
-    --color-iconstext: #55c35b;
-    --color-iconstext-hover: #55c35b;
-    --color-text: color del texto que se escribe
-    --color-logo: color del logo Typemonkey
-    --color-selected: botones seleccionados y teclado arriba
-    --color-error: error al escribir
-    --color-randomwords: palabras aleatorias
-  */
