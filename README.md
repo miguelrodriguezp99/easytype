@@ -1,6 +1,7 @@
 # EasyType
 
-![EasyType](https://github.com/miguelrodriguezp99/typing-web-app/assets/72866796/5de5208d-13de-435b-bb7c-38633b4db33e)
+![Typing-web-hero-shots](https://github.com/miguelrodriguezp99/EasyType/assets/72866796/10b25aa6-a602-4cc6-9a48-ab872b9869ff)
+
 
 ## Introduction
 
