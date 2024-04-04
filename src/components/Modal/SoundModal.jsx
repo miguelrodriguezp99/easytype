@@ -47,7 +47,7 @@ export default function SoundModal() {
     } else {
       setModal(true);
       setAnimationClass(
-        "animate-fade-up animate-once animate-duration-300 animate-ease-out animate-normal"
+        "animate-fade animate-once animate-duration-200 animate-ease-out animate-normal"
       );
     }
   }, [modal, closeModal]);

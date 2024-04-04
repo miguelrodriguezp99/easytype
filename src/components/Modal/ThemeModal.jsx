@@ -20,7 +20,7 @@ export default function ThemeModal() {
     setAnimationClass("");
     setTimeout(() => {
       setAnimationClass(
-        "animate-fade-up animate-once animate-duration-300 animate-ease-out animate-reverse "
+        "animate-fade animate-once animate-duration-200 animate-ease-out animate-reverse "
       );
     }, 10);
 
