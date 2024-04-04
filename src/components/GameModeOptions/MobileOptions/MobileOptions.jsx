@@ -45,7 +45,7 @@ const MobileOptions = () => {
 
   return (
     <>
-      <div className="mobile-options-container">
+      <div className="mobile-options-button-container">
         <button onClick={toggleModal} className="mobile-options-button">
           <Settings />
           Test Settings

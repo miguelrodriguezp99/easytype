@@ -7,6 +7,13 @@
     animation: fade 600ms ease-in-out both;
 }
 
+@media (max-width: 550px) {
+    .auth-form-container {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+}
+
 .auth-title {
     color: var(--color-iconstext-hover);
     font-weight: 600;

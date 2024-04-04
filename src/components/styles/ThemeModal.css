@@ -6,7 +6,7 @@
 }
 
 .theme-background {
-    background-color: #313131b3;
+    background-color: var(--color-tertiary);
     opacity: 0.75;
     width: 100%;
     height: 100%;
