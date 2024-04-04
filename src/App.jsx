@@ -16,6 +16,8 @@ function App() {
           element={authUser ? <Navigate to="/" /> : <LoginSignup />}
         />
         <Route path="/about" element={<About />} />
+        {/* error route */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
