@@ -3,6 +3,7 @@
     position: relative;
     align-items: center;
     display: flex;
+    height: 100%;
     justify-content: space-around;
     animation: fade 600ms ease-in-out both;
 }
