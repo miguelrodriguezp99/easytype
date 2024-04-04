@@ -1,11 +1,11 @@
-# EasyType
+# Easytype
 
 ![Typing-web-hero-shots](https://github.com/miguelrodriguezp99/EasyType/assets/72866796/10b25aa6-a602-4cc6-9a48-ab872b9869ff)
 
 
 ## Introduction
 
-EasyType is a cutting-edge, responsive web application that draws inspiration from the renowned open-source MonkeyType platform. Designed with an educational intent, it offers a rich environment for users keen on enhancing their typing skills. This app supports a wide range of devices, including smartphones, tablets, and desktop computers, to ensure a flawless user experience. It features a dedicated server architecture for managing user accounts, allowing for customized typing practice with in-depth feedback on metrics such as speed, accuracy, and more after each session.
+Easytype is a cutting-edge, responsive web application that draws inspiration from the renowned open-source MonkeyType platform. Designed with an educational intent, it offers a rich environment for users keen on enhancing their typing skills. This app supports a wide range of devices, including smartphones, tablets, and desktop computers, to ensure a flawless user experience. It features a dedicated server architecture for managing user accounts, allowing for customized typing practice with in-depth feedback on metrics such as speed, accuracy, and more after each session.
 
 The inception of this app was as a frontend-centric project, developed personally by me. Although initially inspired by MonkeyType, EasyType has evolved significantly. To see the beginnings of this journey, you can explore the initial frontend development repository here: [\[Frontend\]](https://github.com/miguelrodriguezp99/typing-web-frontend).
 
