@@ -5,6 +5,16 @@
     font-family: Menlo, monospace;
 }
 
+html{
+    background-color: var(--color-primary);
+}
+
+body{
+    background-color: var(--color-primary);
+}
+
+
+
 .grid-layout {
     max-width: 1000px;
     display: grid;
@@ -87,9 +97,7 @@
     --color-correct-letter: #73d378;
 }
 
-html{
-    background-color: var(--color-primary);
-}
+
 
 @keyframes trance {
     0% {
