@@ -28,6 +28,14 @@
     gap: 1rem;
 }
 
+@media(max-width: 500px) {
+    .info-tests {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+}
+
 .info-test{
     display: flex;
     flex-direction: column;
@@ -121,6 +129,13 @@ color: var(--color-iconstext);
     display: flex;
     justify-content: space-between;
     gap: 20px;
+}
+
+@media (max-width: 500px) {
+    .contact-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 .custom-tooltip{

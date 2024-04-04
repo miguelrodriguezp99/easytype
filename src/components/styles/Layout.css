@@ -87,6 +87,10 @@
     --color-correct-letter: #73d378;
 }
 
+html{
+    background-color: #00021b;
+}
+
 @keyframes trance {
     0% {
       color: #e51376;
