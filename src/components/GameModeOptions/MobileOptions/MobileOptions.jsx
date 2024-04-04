@@ -3,11 +3,18 @@ import { useWordsStore } from "../../../store/useWords";
 import useGameModeOpts from "../../../hooks/useGameModeOptions";
 import { Settings } from "../../../assets/icons/HeaderIcons";
 import "../../styles/MobileOptions.css";
+import { GAME_MODE } from "../../../utils/constants";
+import {
+  gameModePunctuationOptions,
+  gameModeOptions,
+} from "../../../utils/constants";
+import MobilenumberOfWordsOptions from "./MobileWordsOptions";
+import MobileTimeOptions from "./MobileTimeOptions";
 
 const MobileOptions = () => {
   const [modal, setModal] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
-  const { punctuation, gameMode, time, selectedWords } = useWordsStore();
+  const { gameMode, time, selectedWords, punctuationMode } = useWordsStore();
   const { handleChangeGameMode, handleChangePunctuationMode } =
     useGameModeOpts();
 
@@ -37,12 +44,70 @@ const MobileOptions = () => {
   }, [modal, closeModal]);
 
   return (
-    <div className="mobile-options-container">
-      <button onClick={toggleModal} className="mobile-options-button">
-        <Settings props="fill-iconstext w-3 h-3" />
-        Test Settings
-      </button>
-    </div>
+    <>
+      <div className="mobile-options-container">
+        <button onClick={toggleModal} className="mobile-options-button">
+          <Settings />
+          Test Settings
+        </button>
+      </div>
+
+      {modal && (
+        <div className={`mobile-options-modal-body ${animationClass}`}>
+          <div
+            onClick={toggleModal}
+            className="mobile-options-background"
+          ></div>
+
+          {/* MODAL CONTENT */}
+          <div className="mobile-options-modal-content">
+            <div className="mobile-options-container">
+              {/* PUNCTUATION */}
+              <div className="mobile-options-punctuation-container">
+                {gameModePunctuationOptions.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleChangePunctuationMode(option.value)}
+                    className={`mobile-modal-button ${
+                      punctuationMode === option.value
+                        ? "punctuation-selected"
+                        : "punctuation-not-selected"
+                    }`}
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+              {/* END PUNCTUATION */}
+
+              {/* GAME MODE */}
+              <div id="#options" className="mobile-game-mode-container">
+                {gameModeOptions.map((option, index) => (
+                  <button
+                    key={index}
+                    className={`mobile-modal-button 
+                    ${
+                      gameMode === option.value
+                        ? "gamemode-selected"
+                        : "gamemode-not-selected"
+                    }`}
+                    onClick={() => handleChangeGameMode(option.value)}
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+              {/* END GAME MODE */}
+
+              {gameMode === GAME_MODE.TIME && <MobileTimeOptions time={time} />}
+              {gameMode === GAME_MODE.WORDS && (
+                <MobilenumberOfWordsOptions numberOfWords={selectedWords} />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

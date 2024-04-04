@@ -32,8 +32,7 @@ const useGameModeOpts = () => {
     setTimeSelected(value);
   };
 
-  const handleWordsChange = (value, event) => {
-    event.preventDefault();
+  const handleWordsChange = (value) => {
     setSelectedWords(value);
   };
 

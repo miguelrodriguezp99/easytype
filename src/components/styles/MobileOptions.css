@@ -18,3 +18,107 @@
     align-items: center;
     gap: 0.75rem/* 12px */;
 }
+
+
+.mobile-options-modal-body {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 99999;
+}
+
+.mobile-options-background {
+    background-color: var(--color-tertiary);
+    opacity: 0.75;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: none;
+    transition-property: none;
+  
+}
+
+.mobile-options-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    padding: 14px 14px;
+    max-width: 600px;
+    min-width: 300px;
+    background-color: var(--color-primary);
+    border-radius: 0.75rem/* 12px */;
+    color: var(--color-secondary)
+}
+
+.mobile-options-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.75rem/* 28px */;
+    padding-left: 1rem/* 16px */;
+    padding-right: 1rem/* 16px */;
+}
+
+.mobile-options-punctuation-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem/* 8px */;
+}
+
+.punctuation-selected{
+    background-color: var(--color-secondary);
+    color: var(--color-tertiary);
+}
+
+.punctuation-not-selected{
+    background-color: var(--color-tertiary);
+    color: var(--color-iconstext);
+}
+
+.mobile-modal-button {
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 6px;
+    transition: all 300ms linear;
+}
+
+.mobile-game-mode-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem/* 8px */;
+}
+
+.gamemode-selected{
+    background-color: var(--color-secondary);
+    color: var(--color-tertiary);
+}
+
+.gamemode-not-selected{
+    background-color: var(--color-tertiary);
+    color: var(--color-iconstext);
+}
+
+.timewords-selected{
+    background-color: var(--color-secondary);
+    color: var(--color-tertiary);
+}
+
+.timewords-not-selected{
+    background-color: var(--color-tertiary);
+    color: var(--color-iconstext);
+}
+
