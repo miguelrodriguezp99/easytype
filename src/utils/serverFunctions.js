@@ -24,11 +24,9 @@ export const insertScore = async ({
     return;
   }
 
-  //  https://miguel-main-server.vercel.app/scores/scores   //local
-  //  https://miguel-main-server.vercel.app/scores/scores  //production
   try {
     const response = await fetch(
-      `https://miguel-main-server.vercel.app/scores/scores`,
+      `https://${import.meta.env.VITE_API_URL}/scores/scores`,
       {
         method: "POST",
         headers: {

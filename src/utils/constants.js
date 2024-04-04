@@ -79,7 +79,7 @@ export const footerLinks = [
   {
     icon: Mail,
     text: "Contact",
-    href: "mailto:example@example.com",
+    href: "mailto:miguelrodriguez.p99@gmail.com",
   },
   {
     icon: Support,
@@ -94,7 +94,7 @@ export const footerLinks = [
   {
     icon: Discord,
     text: "Discord",
-    href: "https://discord.example.com",
+    href: "https://github.com/miguelrodriguezp99/typing-web",
   },
   {
     icon: X,
@@ -104,17 +104,17 @@ export const footerLinks = [
   {
     icon: Terms,
     text: "Terms",
-    href: "https://twitter.com/miguelrguez99",
+    href: "https://github.com/miguelrodriguezp99/typing-web",
   },
   {
     icon: Security,
     text: "Security",
-    href: "https://twitter.com/miguelrguez99",
+    href: "https://github.com/miguelrodriguezp99/typing-web",
   },
   {
     icon: Privacy,
     text: "Privacy",
-    href: "https://twitter.com/miguelrguez99",
+    href: "https://github.com/miguelrodriguezp99/typing-web",
   },
 ];
 

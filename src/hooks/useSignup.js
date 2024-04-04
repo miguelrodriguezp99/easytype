@@ -23,7 +23,6 @@ const useSignup = () => {
     );
     if (!success) return;
     setLoading(true);
-    // https://miguel-main-server.vercel.app/auth/signup   //local
     // https://${import.meta.env.VITE_API_URL}/auth/signup //production
     try {
       const res = await fetch(

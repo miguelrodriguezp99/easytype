@@ -10,10 +10,9 @@ const useLogout = () => {
   const logout = async () => {
     setLoading(true);
     // https://${import.meta.env.VITE_API_URL}/auth/logout
-    // https://miguel-main-server.vercel.app/auth/logout
     try {
       const res = await fetch(
-        `https://miguel-main-server.vercel.app/auth/logout`,
+        `https://${import.meta.env.VITE_API_URL}/auth/logout`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
