@@ -29,6 +29,7 @@ const useTyping = (inputRef) => {
     removeLastLetter,
     setAppStateFinished,
     calculateResults,
+    appendCurrentWordAtTheEnd,
   } = useWordsStore();
   const { currentSound, volume, muted } = useSoundsStore();
   const [play] = useSound(currentSound, { volume: volume });
@@ -38,6 +39,11 @@ const useTyping = (inputRef) => {
   const defaultSpaceBar = useCallback(() => {
     //If it's the last word, we don't need to update the caret
     inputRef.current.value = "";
+
+    // If we're in time mode, add this word to the end of the words (so its infinite typing)
+    if (gameMode === GAME_MODE.TIME) {
+      appendCurrentWordAtTheEnd();
+    }
 
     if (wordIndex === words.length - 1) {
       return;

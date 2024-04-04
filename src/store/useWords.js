@@ -375,7 +375,26 @@ export const useWordsStore = create((set, get) => ({
       accuracy: get().accuracy,
     });
   },
+
+  // We append the actual word (wordIndex) to the end of the words array
+  appendCurrentWordAtTheEnd: () => {
+    set((state) => {
+      const newWords = [...state.words];
+      const currentWord = newWords[state.wordIndex];
+
+      // Reset the states of the letters
+      currentWord.forEach((letter) => {
+        letter.state = null;
+      });
+
+      newWords.push(currentWord);
+
+      return { ...state, words: newWords };
+    });
+  },
 }));
+
+//
 
 // Mutable way
 //Change the state of a letter

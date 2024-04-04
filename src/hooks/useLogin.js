@@ -13,7 +13,6 @@ const useLogin = () => {
 
     setLoading(true);
     // https://${import.meta.env.VITE_API_URL}/auth/login  //production
-    // https://miguel-main-server.vercel.app/auth/login    //local
     try {
       const res = await fetch(
         `https://${import.meta.env.VITE_API_URL}/auth/login `,
