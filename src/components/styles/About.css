@@ -1,0 +1,138 @@
+.about{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.about-created{
+    color: var(--color-iconstext);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.info-and-chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-tests {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.info-test{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    
+}
+
+.info-test p{
+    color: var(--color-iconstext);
+}
+
+
+
+.info-test-textsm {
+    color: var(--color-iconstext-hover);
+    font-size: 1.5rem;
+}
+
+.info-test-textxl {
+    color: var(--color-iconstext-hover);
+    font-size: 3rem;
+    line-height: 3.5rem;
+    
+}
+
+.chart-container {
+    height: 150px;
+    width: 100%;
+}
+
+.chart-container p {
+text-align: end;
+font-size: 14px;
+color: var(--color-iconstext);
+}
+
+
+.bar {
+    fill: var(--color-secondary);
+}
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-content{
+    gap: 10px;
+}
+
+.about-content h2{
+    font-size: 2rem;
+    color: var(--color-iconstext);
+}
+
+.about-content h3{
+    font-size: 1.10rem;
+    color: var(--color-iconstext);
+}
+
+.about-content p{
+  
+    color: var(--color-iconstext-hover);
+}
+
+.about-button {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: var(--color-tertiary);
+    padding: 2rem 0;
+    color: var(--color-iconstext-hover);
+    font-size: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.2s linear;
+}
+
+.about-button:hover {
+    background-color: var(--color-iconstext-hover);
+    color: var(--color-tertiary);
+}
+
+.contact-buttons{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.custom-tooltip{
+    background-color: var(--color-tertiary);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--color-iconstext);
+}
+
+.custom-tooltip p{
+
+    color: var(--color-iconstext-hover);
+}
+
+

@@ -14,7 +14,6 @@
     gap: 2rem;
     padding-top: 1rem;
     padding-bottom: 1.5rem;
-    align-items: center;
     grid-template-rows: auto 1fr auto;
     width: 100%;
 }
