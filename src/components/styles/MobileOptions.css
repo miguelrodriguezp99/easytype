@@ -1,0 +1,20 @@
+.mobile-options-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+   
+}
+
+.mobile-options-button {
+    padding-left: 1.25rem/* 20px */;
+    padding-right: 1.25rem/* 20px */;
+    padding-top: 0.5rem/* 8px */;
+    padding-bottom: 0.5rem/* 8px */;
+    background-color: var(--color-tertiary);
+    color: var(--color-iconstext);
+    border-radius: 0.375rem/* 6px */;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem/* 12px */;
+}

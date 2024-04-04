@@ -17,7 +17,7 @@ const GameMode = () => {
         gameModeOptions.map((option, index) => (
           <div
             key={index}
-            className={` game-options-buttons 
+            className={`game-options-buttons 
             ${
               gameMode === option.value
                 ? "game-options-buttons-selected "
