@@ -1,22 +1,10 @@
-import { useWordsStore } from "../../store/useWords";
-
 import { gameModeOptions } from "../../utils/constants";
 import "./../styles/Options.css";
-
 import { GAME_MODE } from "../../utils/constants";
+import useGameModeOpts from "../../hooks/useGameModeOptions";
 
 const GameMode = () => {
-  const { gameMode, setGameMode, setSelectedWords } = useWordsStore();
-
-  const handleChangeGameMode = (mode) => {
-    if (mode === GAME_MODE.TIME) {
-      setSelectedWords(75);
-    }
-    if (mode === GAME_MODE.WORDS) {
-      setSelectedWords(25);
-    }
-    setGameMode(mode);
-  };
+  const { gameMode, handleChangeGameMode } = useGameModeOpts();
 
   return (
     <section className="options-game-mode-container">

@@ -1,14 +1,8 @@
-import { useWordsStore } from "../../store/useWords";
+import useGameModeOpts from "../../hooks/useGameModeOptions";
 import { numberOfTimeOptions } from "../../utils/constants";
 
 const TimeOptions = () => {
-  const { timeSelected, setTimeSelected } = useWordsStore();
-  // const { handleTimeChange } = useGameModeOpts();
-  const handleTimeChange = (value) => {
-    // event.preventDefault();
-    // setSelectedWords(value);
-    setTimeSelected(value);
-  };
+  const { timeSelected, handleTimeChange } = useGameModeOpts();
 
   return (
     <section className="number-of-words-options-container">

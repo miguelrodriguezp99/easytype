@@ -1,18 +1,8 @@
-import { useWordsStore } from "../../store/useWords";
-import {
-  PUNCTUATION_MODE,
-  gameModePunctuationOptions,
-} from "../../utils/constants";
+import useGameModeOpts from "../../hooks/useGameModeOptions";
+import { gameModePunctuationOptions } from "../../utils/constants";
 
 const PunctuationOptions = () => {
-  const { punctuationMode, setPunctuationMode } = useWordsStore();
-  // const { handleChangePunctuationMode, handleChangeNumbersMode } =
-  //   useGamePunctuationMode();
-
-  const handleChangePunctuationMode = (mode) => {
-    if (punctuationMode === mode) setPunctuationMode(PUNCTUATION_MODE.DISABLED);
-    else setPunctuationMode(mode);
-  };
+  const { punctuationMode, handleChangePunctuationMode } = useGameModeOpts();
 
   return (
     <section className="puntuation-options-container">
