@@ -20,11 +20,15 @@ const Header = () => {
   const { logout } = useLogout();
   const { restart } = useWordsStore();
   const navigate = useNavigate();
+  const handleClickSecondKeyboard = () => {
+    navigate("/");
+    restart();
+  };
   const headerIcons = [
     {
       id: 1,
       icon: KeyboardSecondIcon,
-      fn: () => navigate("/"),
+      fn: handleClickSecondKeyboard,
     },
     {
       id: 2,

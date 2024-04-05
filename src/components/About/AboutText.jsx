@@ -76,34 +76,6 @@ const AboutText = () => {
           issue on GitHub.
         </p>
       </section>
-
-      <section className="about-content">
-        <h2>support</h2>
-        <p>
-          Thanks to everyone who has supported this project. It would not be
-          possible without you and your continued support.
-        </p>
-        <button className="about-button">Support</button>
-      </section>
-
-      <section className="about-content">
-        <h2>support</h2>
-        <p>
-          Thanks to everyone who has supported this project. It would not be
-          possible without you and your continued support.
-        </p>
-        <div className="contact-buttons">
-          <button className="about-button">Mail</button>
-          <button className="about-button">Twitter</button>
-          <button className="about-button">Discord</button>
-          <button className="about-button">GitHub</button>
-        </div>
-      </section>
-
-      <section className="about-content">
-        <h2>credits</h2>
-        <p>Thanks to @midudev for the inspiration and the initial codebase.</p>
-      </section>
     </div>
   );
 };

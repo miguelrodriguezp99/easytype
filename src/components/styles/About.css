@@ -70,9 +70,9 @@
 }
 
 .chart-container p {
-text-align: end;
-font-size: 14px;
-color: var(--color-iconstext);
+    text-align: end;
+    font-size: 14px;
+    color: var(--color-iconstext);
 }
 
 
@@ -118,11 +118,16 @@ color: var(--color-iconstext);
     font-size: 1.5rem;
     border-radius: 12px;
     transition: all 0.2s linear;
+    gap: 10px;
 }
 
 .about-button:hover {
     background-color: var(--color-iconstext-hover);
     color: var(--color-tertiary);
+}
+
+.about-button:hover .icons-about {
+    fill: var(--color-primary);
 }
 
 .contact-buttons{
