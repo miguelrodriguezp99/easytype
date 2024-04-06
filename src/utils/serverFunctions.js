@@ -53,3 +53,32 @@ export const insertScore = async ({
     console.log("An error occurred while saving your score.");
   }
 };
+
+export const getLeaderboardScores = async (gameMode) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/scores/leaderboard?gameMode=${encodeURIComponent(
+        gameMode
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.log(data.error);
+      return [];
+    }
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    console.log("An error occurred while fetching top scores.");
+    return [];
+  }
+};

@@ -380,9 +380,10 @@ export const useWordsStore = create((set, get) => ({
   appendCurrentWordAtTheEnd: () => {
     set((state) => {
       const newWords = [...state.words];
-      const currentWord = newWords[state.wordIndex];
+      // Realiza una copia profunda de la palabra actual.
+      const currentWord = JSON.parse(JSON.stringify(newWords[state.wordIndex]));
 
-      // Reset the states of the letters
+      // Restablece los estados de las letras
       currentWord.forEach((letter) => {
         letter.state = null;
       });

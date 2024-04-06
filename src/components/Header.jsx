@@ -24,6 +24,7 @@ const Header = () => {
     navigate("/");
     restart();
   };
+
   const headerIcons = [
     {
       id: 1,

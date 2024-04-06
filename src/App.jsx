@@ -5,6 +5,7 @@ import { useAuthContext } from "./context/AuthContext";
 import LoginSignup from "./pages/login-signup/LoginSignup";
 import About from "./pages/about/About";
 import Settings from "./pages/settings/Settings";
+import Leaderboard from "./pages/leaderboard/Leaderboard";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -17,10 +18,11 @@ function App() {
           element={authUser ? <Navigate to="/" /> : <LoginSignup />}
         />
         <Route path="/about" element={<About />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
         {/* error route */}
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/404" element={<Navigate to="/" />} />
-        <Route path="/settings" element={<Settings />} />
       </Routes>
     </>
   );
