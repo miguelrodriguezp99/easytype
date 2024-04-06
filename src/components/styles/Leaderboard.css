@@ -7,6 +7,7 @@
     animation: fade 600ms ease-in-out both;
 }
 
+
 .lb-title{
     color: var(--color-iconstext-hover);
     font-size: 2.3rem;
@@ -19,10 +20,21 @@
     gap: 40px;
 }
 
+@media (max-width: 750px) {
+    .scores-container {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
 .scores {
     width: 100%;
     font-size: 1.75rem;
     color: var(--color-iconstext-hover);
+}
+
+.scores-gamemode {
+    color: var(--color-secondary)
 }
 
 .scores table{
@@ -30,6 +42,7 @@
     width: 100%;
     margin-top: 10px;
     text-align: end;
+
 }
 
 table th{
@@ -37,8 +50,8 @@ table th{
 }
 
 table .th-name{
-    display: flex;
-    flex: 1;
+    text-align: start;
+    height: 100%;
 }
 
 
@@ -46,34 +59,37 @@ table th, table td{
     padding: 15px 10px;
 }
 
-table tr:nth-child(even) {
+table th, table td {
+    padding: 15px 10px;
+}
+
+/* Modifica este selector para aplicar el estilo solo a las filas dentro de tbody */
+table tbody tr:nth-child(odd) {
     background-color: var(--color-tertiary);
-     /* Ajusta este color según tus preferencias */
 }
 
 table {
     border-collapse: separate;
     border-spacing: 0; /* Elimina el espacio entre celdas si es necesario */
-    padding-right: 10px;
 }
 
-
-table tr:nth-child(even) td:first-child {
+/* Específico para filas dentro de tbody para evitar afectar el thead */
+table tbody tr:nth-child(odd) td:first-child {
     border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; /* Mueve esto dentro del selector específico para tbody */
 }
 
-table tr:nth-child(even) td:last-child {
+table tbody tr:nth-child(odd) td:last-child {
     border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; /* Mueve esto dentro del selector específico para tbody */
 }
 
-/* Aplicar border-radius a las esquinas inferiores de las primeras y últimas celdas de las filas impares */
-table tr:nth-child(even) td:first-child {
-    border-bottom-left-radius: 5px;
+.actual-user-score{
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
 }
 
-table tr:nth-child(even) td:last-child {
-    border-bottom-right-radius: 5px;
-}
+
 
 @keyframes fade {
     from {

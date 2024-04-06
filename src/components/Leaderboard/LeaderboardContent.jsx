@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./../styles/Leaderboard.css";
 import { getLeaderboardScores } from "../../utils/serverFunctions";
 import { format, parseISO } from "date-fns";
+import { useAuthContext } from "../../context/AuthContext";
 
 const LeaderboardContent = () => {
   const [scores15, setScores15] = useState([]);
   const [scores60, setScores60] = useState([]);
+  const { authUser } = useAuthContext();
 
   useEffect(() => {
     // Ejecuta ambas solicitudes de manera paralela y actualiza los estados cuando ambas promesas se resuelvan.
@@ -33,7 +35,7 @@ const LeaderboardContent = () => {
 
       <div className="scores-container">
         <div className="scores">
-          Time 15
+          <p className="scores-gamemode">Time 15</p>
           {/* A TABLE */}
           <table className="table">
             <thead>
@@ -56,13 +58,22 @@ const LeaderboardContent = () => {
                   <td>{formatDate(score.test_date)}</td>
                 </tr>
               ))}
+
+              {authUser && (
+                <tr className="actual-user-score">
+                  <td className="th-number">-</td>
+                  <td className="th-name">{authUser.username}</td>
+                  <td>20</td>
+                  <td>80</td>
+                  <td>Your date</td>
+                </tr>
+              )}
             </tbody>
           </table>
-          <div className="w-full bg-slate-300 text-black">Your score</div>
         </div>
 
         <div className="scores">
-          Time 60
+          <p className="scores-gamemode">Time 60</p>
           <table className="table">
             <thead>
               <tr className="tr">
@@ -84,6 +95,15 @@ const LeaderboardContent = () => {
                   <td>{formatDate(score.test_date)}</td>
                 </tr>
               ))}
+              {authUser && (
+                <tr className="actual-user-score">
+                  <td className="th-number">-</td>
+                  <td className="th-name">{authUser.username}</td>
+                  <td>20</td>
+                  <td>80</td>
+                  <td>Your date</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
