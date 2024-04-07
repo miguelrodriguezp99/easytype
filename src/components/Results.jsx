@@ -24,70 +24,71 @@ const Results = () => {
   const testType = getTestType(gameMode, timeSelected, selectedWords);
 
   return (
-    <section
-      id="results-info-section"
-      className={`${
-        appState === APP_STATE.FINISHED ? "show-results" : "hide-results"
-      }`}
-    >
-      <div className={`results `}>
-        <div className="stats">
-          <div className="acc-wpm">
-            <p className="acc-wpm-title">wpm</p>
-            <p className="acc-wpm-value">{wpm}</p>
-          </div>
+    <div className="results-wrapper">
+      <section
+        className={`results-info-section ${
+          appState === APP_STATE.FINISHED ? "show-results" : "hide-results"
+        }`}
+      >
+        <div className={`results`}>
+          <div className="stats">
+            <div className="acc-wpm">
+              <p className="acc-wpm-title">wpm</p>
+              <p className="acc-wpm-value">{wpm}</p>
+            </div>
 
-          <div className="acc-wpm">
-            <p className="acc-wpm-title">acc</p>
-            <p className="acc-wpm-value">{accuracy}%</p>
-          </div>
-        </div>
-
-        <div className="chart">
-          {appState === APP_STATE.FINISHED && <ChartComp />}
-        </div>
-
-        <div className="morestats">
-          <div className="">
-            <div className="stats-top">test type</div>
-            <div className="stats-bottom">{testType}</div>
-          </div>
-          <div>
-            <div className="stats-top">other</div>
-            <div className="stats-bottom">invalid (accuracy)</div>
-          </div>
-          <div>
-            <div className="stats-top">raw</div>
-            <div className="stats-bottom text-size">56</div>
-          </div>
-          <div>
-            <div className="stats-top">characters</div>
-            <div className="stats-bottom text-size">
-              {correctLetters}/{incorrectLetters}/0/0
+            <div className="acc-wpm">
+              <p className="acc-wpm-title">acc</p>
+              <p className="acc-wpm-value">{accuracy}%</p>
             </div>
           </div>
-          <div>
-            <div className="stats-top">consistency</div>
-            <div className="stats-bottom text-size">90%</div>
+
+          <div className="chart">
+            {appState === APP_STATE.FINISHED && <ChartComp />}
           </div>
-          <div>
-            <div className="stats-top">time</div>
-            <div className="stats-bottom text-size">{timeUsed}s</div>
+
+          <div className="morestats">
+            <div className="">
+              <div className="stats-top">test type</div>
+              <div className="stats-bottom">{testType}</div>
+            </div>
+            <div>
+              <div className="stats-top">other</div>
+              <div className="stats-bottom">invalid (accuracy)</div>
+            </div>
+            <div>
+              <div className="stats-top">raw</div>
+              <div className="stats-bottom text-size">56</div>
+            </div>
+            <div>
+              <div className="stats-top">characters</div>
+              <div className="stats-bottom text-size">
+                {correctLetters}/{incorrectLetters}/0/0
+              </div>
+            </div>
+            <div>
+              <div className="stats-top">consistency</div>
+              <div className="stats-bottom text-size">90%</div>
+            </div>
+            <div>
+              <div className="stats-top">time</div>
+              <div className="stats-bottom text-size">{timeUsed}s</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="result-buttons">
-        {bottomButtons.map((resultButton, index) => (
-          <button
-            key={index}
-            className="result-button"
-            onClick={resultButton.fn}
-          >
-            <resultButton.icon />
-          </button>
-        ))}
-      </div>
-    </section>
+        <div className="result-buttons">
+          {bottomButtons.map((resultButton, index) => (
+            <button
+              key={index}
+              className="result-button"
+              onClick={resultButton.fn}
+            >
+              <resultButton.icon />
+            </button>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 

@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { useWordsStore } from "../../store/useWords";
 
 const ChartComp = () => {
@@ -82,20 +89,22 @@ const ChartComp = () => {
   };
 
   return (
-    <>
-      <LineChart width={800} height={190} data={dataWpm}>
-        <Line
-          type="monotone"
-          dataKey="wpm"
-          className="line-chart-line"
-          stroke="var(--color-tertiary)"
-          fill="var(--color-secondary)"
-        />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip content={<CustomTooltip />} />
-      </LineChart>
-    </>
+    <div>
+      <ResponsiveContainer width="100%" height={190}>
+        <LineChart data={dataWpm}>
+          <Line
+            type="monotone"
+            dataKey="wpm"
+            className="line-chart-line"
+            stroke="var(--color-tertiary)"
+            fill="var(--color-secondary)"
+          />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip content={<CustomTooltip />} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
