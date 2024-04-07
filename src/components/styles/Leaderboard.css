@@ -34,6 +34,9 @@
 }
 
 .scores-gamemode {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     color: var(--color-secondary)
 }
 
@@ -88,6 +91,12 @@ table tbody tr:nth-child(odd) td:last-child {
     color: var(--color-secondary);
     background-color: var(--color-primary);
 }
+
+.not-qualified{
+    text-align: center;
+}
+
+
 
 
 

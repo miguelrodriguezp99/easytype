@@ -44,7 +44,7 @@ const Results = () => {
         </div>
 
         <div className="chart">
-          <ChartComp />
+          {appState === APP_STATE.FINISHED && <ChartComp />}
         </div>
 
         <div className="morestats">

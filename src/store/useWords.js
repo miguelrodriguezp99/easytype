@@ -26,6 +26,7 @@ export const useWordsStore = create((set, get) => ({
   incorrectLetters: 0,
   wpm: 0,
   accuracy: 0,
+  wordsStatPoints: [],
 
   setSelectedWords: (words) => {
     set({ selectedWords: words });
@@ -256,6 +257,7 @@ export const useWordsStore = create((set, get) => ({
 
   restart: () => {
     get().setWords();
+    set({ wordsStatPoints: [] });
     set({ timeUsed: 0 });
     set({ timeRemaining: get().timeSelected });
     set({ appState: APP_STATE.STOPPED });
@@ -392,6 +394,45 @@ export const useWordsStore = create((set, get) => ({
 
       return { ...state, words: newWords };
     });
+  },
+
+  incrementCurrentStatIndex: () => {
+    set({ currentStatIndex: get().currentStatIndex + 1 });
+  },
+
+  setWordsStats: () => {
+    // Calculamos cuantas letras correctas lleva el usuario ahora mismo
+    let correctWords = 0;
+
+    if (get().timeUsed === 0) return;
+
+    // Compruebo hasta el wordIndex que toda la palabra esté correcta y sumo uno
+    for (let i = 0; i <= get().wordIndex; i++) {
+      let wordCorrect = true;
+      for (let j = 0; j < get().words[i].length; j++) {
+        if (
+          get().words[i][j].state !== "correct" &&
+          get().words[i][j].state !== "correct active last"
+        ) {
+          wordCorrect = false;
+        }
+      }
+      if (wordCorrect) {
+        correctWords += 1;
+      }
+    }
+
+    const newWordsStatPoints = get().wordsStatPoints;
+    // Calculamos las palabras por minuto
+    const actualWpm = Math.floor((correctWords / get().timeUsed) * 60);
+    newWordsStatPoints[get().timeUsed] = {
+      wpm: actualWpm,
+      time: get().timeUsed,
+    };
+
+    set({ wordsStatPoints: newWordsStatPoints });
+
+    console.log(get().wordsStatPoints);
   },
 }));
 

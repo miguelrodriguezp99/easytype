@@ -97,6 +97,11 @@
 }
 
 
+.line-chart-line{
+    stroke: var(--color-tertiary);
+}
+
+
 @keyframes fade {
     0% {
       opacity: 0;
@@ -105,4 +110,7 @@
       opacity: 1;
     }
 }
+
+
+
 

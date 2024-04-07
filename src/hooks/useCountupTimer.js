@@ -3,8 +3,14 @@ import { useWordsStore } from "../store/useWords";
 import { GAME_MODE } from "../utils/constants";
 
 const useCountupTimer = () => {
-  const { appState, finishedState, gameMode, timeUsed, setTimeUsed } =
-    useWordsStore();
+  const {
+    appState,
+    finishedState,
+    gameMode,
+    timeUsed,
+    setTimeUsed,
+    setWordsStats,
+  } = useWordsStore();
 
   //Time countdown every second
   useEffect(() => {
@@ -19,10 +25,17 @@ const useCountupTimer = () => {
         setInterval(() => setTimeUsed(timeUsed + 1), 1000);
 
       return () => {
+        console.log("clearing timer");
         clearInterval(timer);
       };
     }
   }, [appState, finishedState, gameMode, timeUsed, setTimeUsed]);
+
+  useEffect(() => {
+    if (gameMode === GAME_MODE.WORDS) {
+      setWordsStats();
+    }
+  }, [timeUsed, gameMode, setWordsStats]);
 
   return { timeUsed };
 };

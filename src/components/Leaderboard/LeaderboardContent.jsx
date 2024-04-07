@@ -6,10 +6,12 @@ import {
 } from "../../utils/serverFunctions";
 import { format, parseISO } from "date-fns";
 import { useAuthContext } from "../../context/AuthContext";
+import Loader from "../Loader";
 
 const LeaderboardContent = () => {
   const [scores15, setScores15] = useState([]);
   const [scores60, setScores60] = useState([]);
+  const [isLoadingScores, setIsLoadingScores] = useState(true);
 
   const [userTopScore15, setUserTopScore15] = useState(null);
   const [userTopScore60, setUserTopScore60] = useState(null);
@@ -22,10 +24,9 @@ const LeaderboardContent = () => {
       getLeaderboardScores("time 60"),
     ])
       .then(([resultScores15, resultScores60]) => {
-        console.log(resultScores15);
-        console.log(resultScores60);
         setScores15(resultScores15);
         setScores60(resultScores60);
+        setIsLoadingScores(false);
       })
       .catch((error) => console.error("Failed to fetch scores", error));
 
@@ -39,8 +40,8 @@ const LeaderboardContent = () => {
         console.error("Failed to fetch user top scores", error)
       );
 
-    console.log(scores15);
-    console.log(scores60);
+    console.log(userTopScore15, userTopScore60);
+    console.log(authUser);
   }, []);
 
   const formatDate = (dateString) => {
@@ -60,7 +61,10 @@ const LeaderboardContent = () => {
 
       <div className="scores-container">
         <div className="scores">
-          <p className="scores-gamemode">Time 15</p>
+          <p className="scores-gamemode">
+            Time 15
+            {isLoadingScores && <Loader />}
+          </p>
           {/* A TABLE */}
           <table className="table">
             <thead>
@@ -84,13 +88,19 @@ const LeaderboardContent = () => {
                 </tr>
               ))}
 
-              {authUser && userTopScore15 !== null && (
+              {authUser && userTopScore15 ? (
                 <tr className="actual-user-score">
                   <td className="th-number">{userTopScore15.position}</td>
-                  <td className="th-name">{authUser.username}</td>
+                  <td className="th-name">You</td>
                   <td>{userTopScore15.wpm}</td>
                   <td>{userTopScore15.accuracy}%</td>
                   <td>{formatDate(userTopScore15.test_date)}</td>
+                </tr>
+              ) : (
+                <tr className="actual-user-score">
+                  <td colSpan={5} className="not-qualified">
+                    Not qualified
+                  </td>
                 </tr>
               )}
             </tbody>
@@ -98,7 +108,10 @@ const LeaderboardContent = () => {
         </div>
 
         <div className="scores">
-          <p className="scores-gamemode">Time 60</p>
+          <p className="scores-gamemode">
+            Time 60
+            {isLoadingScores && <Loader />}
+          </p>
           <table className="table">
             <thead>
               <tr className="tr">
@@ -120,13 +133,19 @@ const LeaderboardContent = () => {
                   <td>{formatDate(score.test_date)}</td>
                 </tr>
               ))}
-              {authUser && userTopScore60 !== null && (
+              {authUser && userTopScore60 ? (
                 <tr className="actual-user-score">
                   <td className="th-number">{userTopScore60.position}</td>
-                  <td className="th-name">{authUser.username}</td>
+                  <td className="th-name">You</td>
                   <td>{userTopScore60.wpm}</td>
                   <td>{userTopScore60.accuracy}%</td>
                   <td>{formatDate(userTopScore60.test_date)}</td>
+                </tr>
+              ) : (
+                <tr className="actual-user-score">
+                  <td colSpan={5} className="not-qualified">
+                    Not qualified
+                  </td>
                 </tr>
               )}
             </tbody>
