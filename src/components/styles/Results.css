@@ -13,7 +13,7 @@
 }
 
 .show-results{
-    display: grid;
+    display: flex;
 }
 
 .hide-results{

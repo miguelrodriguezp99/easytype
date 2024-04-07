@@ -24,12 +24,12 @@ const Results = () => {
   const testType = getTestType(gameMode, timeSelected, selectedWords);
 
   return (
-    <div className="results-wrapper">
-      <section
-        className={`results-info-section ${
-          appState === APP_STATE.FINISHED ? "show-results" : "hide-results"
-        }`}
-      >
+    <div
+      className={`results-wrapper ${
+        appState === APP_STATE.FINISHED ? "show-results" : "hide-results"
+      }`}
+    >
+      <section className={`results-info-section `}>
         <div className={`results`}>
           <div className="stats">
             <div className="acc-wpm">

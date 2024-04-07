@@ -37,7 +37,7 @@ const TypingArea = () => {
   };
 
   return (
-    <main
+    <div
       className={`typing-area ${appState === APP_STATE.FINISHED && "hidden"}`}
     >
       <time className="timer">
@@ -73,7 +73,7 @@ const TypingArea = () => {
       </div>
 
       <input className="typing-area-input" autoFocus ref={inputRef}></input>
-    </main>
+    </div>
   );
 };
 

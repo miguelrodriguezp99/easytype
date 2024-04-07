@@ -26,6 +26,7 @@ body{
     padding-bottom: 1.5rem;
     grid-template-rows: auto 1fr auto;
     width: 100%;
+    
 }
 
 :root {
