@@ -38,6 +38,8 @@
     z-index: 2;
 }
 
+
+
 .stats{
     grid-area: stats;
     display: flex;
@@ -63,16 +65,62 @@
 
 .chart{
     grid-area: chart;
-    width: 100%;
-    
 }
 
 .morestats {
     grid-area: morestats;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
     justify-content: space-between;
-    gap: 0.5rem;
+    
 }
+
+@media (max-width: 750px) {
+    .results {
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+            "stats"
+            "chart"
+            "morestats";
+    }
+}
+
+
+@media (max-width: 1050px) {
+    .morestats {
+        /* two rows */
+        grid-template-columns: repeat(3, auto);
+
+    }
+}
+
+@media (max-width: 750px) {
+    .morestats {
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+
+
+@media (max-width: 750px) {
+    .stats {
+        /* two rows */
+        flex-direction: row;
+        gap: 64px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chart {
+        width: 90%;
+    }
+}
+
+
+
+
 
 .stats-top{
     color: var(--color-iconstext);
@@ -91,10 +139,9 @@
 .result-buttons{
     display: flex;
     justify-content: center;
-    
+    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
-    
     gap: 1rem;
    
 }

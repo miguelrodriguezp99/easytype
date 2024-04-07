@@ -3,7 +3,7 @@ import { useWordsStore } from "../../../store/useWords";
 import useGameModeOpts from "../../../hooks/useGameModeOptions";
 import { Settings } from "../../../assets/icons/HeaderIcons";
 import "../../styles/MobileOptions.css";
-import { GAME_MODE } from "../../../utils/constants";
+import { APP_STATE, GAME_MODE } from "../../../utils/constants";
 import {
   gameModePunctuationOptions,
   gameModeOptions,
@@ -14,7 +14,8 @@ import MobileTimeOptions from "./MobileTimeOptions";
 const MobileOptions = () => {
   const [modal, setModal] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
-  const { gameMode, time, selectedWords, punctuationMode } = useWordsStore();
+  const { gameMode, time, selectedWords, punctuationMode, appState } =
+    useWordsStore();
   const { handleChangeGameMode, handleChangePunctuationMode } =
     useGameModeOpts();
 
@@ -45,7 +46,11 @@ const MobileOptions = () => {
 
   return (
     <>
-      <div className="mobile-options-button-container">
+      <div
+        className={`mobile-options-button-container ${
+          appState !== APP_STATE.STOPPED && "options-hide"
+        }`}
+      >
         <button onClick={toggleModal} className="mobile-options-button">
           <Settings />
           Test Settings

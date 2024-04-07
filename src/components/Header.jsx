@@ -94,7 +94,7 @@ const Header = () => {
           <NotificationModal />
 
           {authUser ? (
-            <div onClick={handleLogOut}>
+            <div onClick={handleLogOut} className="cursor-pointer">
               <Logout />
             </div>
           ) : (

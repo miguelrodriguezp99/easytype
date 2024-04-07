@@ -55,7 +55,9 @@ header .header-title {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
     font-size: 16px;
     color: var(--color-iconstext);
-    letter-spacing: 1.5px;
+    letter-spacing: 0.1px;
+    text-transform: lowercase;
+
 }
 
 .profile-icon {
