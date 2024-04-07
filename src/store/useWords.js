@@ -431,8 +431,6 @@ export const useWordsStore = create((set, get) => ({
     };
 
     set({ wordsStatPoints: newWordsStatPoints });
-
-    console.log(get().wordsStatPoints);
   },
 }));
 

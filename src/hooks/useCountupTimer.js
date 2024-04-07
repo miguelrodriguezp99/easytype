@@ -25,7 +25,6 @@ const useCountupTimer = () => {
         setInterval(() => setTimeUsed(timeUsed + 1), 1000);
 
       return () => {
-        console.log("clearing timer");
         clearInterval(timer);
       };
     }

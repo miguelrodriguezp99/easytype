@@ -45,15 +45,15 @@ const ChartComp = () => {
       }
 
       // Make sure the last point is included and we dont exceed the timeUsed
-      // Encuentra el último punto antes de timeUsed sin superarlo
-      let lastValidIndex = filteredPoints.length - 1; // Comienza desde el último elemento
+      // Find the last valid point (not exceeding timeUsed)
+      let lastValidIndex = filteredPoints.length - 1; // Start from the last point
       for (; lastValidIndex >= 0; lastValidIndex--) {
         if (filteredPoints[lastValidIndex].time <= timeUsed) {
-          break; // Encuentra el índice del último punto válido y sale del bucle
+          break; // Find the correct point and leave the loop
         }
       }
 
-      // Solo añade este punto si realmente encontramos uno válido
+      // Just in case, if the last point is not included, add it
       if (lastValidIndex >= 0) {
         const lastPoint = filteredPoints[lastValidIndex];
         chartData.push({
