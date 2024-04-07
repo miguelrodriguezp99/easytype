@@ -1,46 +1,41 @@
-# Easytype
+# EasyType
 
 ![Typing-web-hero-shots](https://github.com/miguelrodriguezp99/EasyType/assets/72866796/10b25aa6-a602-4cc6-9a48-ab872b9869ff)
 
-
 ## Introduction
 
-Easytype is a cutting-edge, responsive web application that draws inspiration from the renowned open-source MonkeyType platform. Designed with an educational intent, it offers a rich environment for users keen on enhancing their typing skills. This app supports a wide range of devices, including smartphones, tablets, and desktop computers, to ensure a flawless user experience. It features a dedicated server architecture for managing user accounts, allowing for customized typing practice with in-depth feedback on metrics such as speed, accuracy, and more after each session.
-
-The inception of this app was as a frontend-centric project, developed personally by me. Although initially inspired by MonkeyType, EasyType has evolved significantly. To see the beginnings of this journey, you can explore the initial frontend development repository here: [\[Frontend\]](https://github.com/miguelrodriguezp99/typing-web-frontend).
+EasyType is a web application aimed at improving typing skills, taking inspiration from the renowned MonkeyType. It's fully responsive, ensuring a seamless experience across various devices, including smartphones, tablets, and desktop computers. The application supports customizable typing tests, in-depth feedback on performance, and user account management for tracking progress over time. Initially a frontend project, EasyType has grown to include numerous features that set it apart, while still paying homage to MonkeyType.
 
 ## Features
 
-- **Responsive Design:** EasyType is crafted to offer an optimal experience across all device types, ensuring a consistent and immersive practice environment.
-- **Customizable Typing Tests:** Tailor your typing tests by choosing your preferred number of words, accommodating different skill levels and goals.
-- **Immediate Feedback:** Receive comprehensive feedback on typing speed, accuracy, and other vital metrics immediately after a test or when time runs out. This feedback is essential for identifying areas of improvement and fostering progress.
-- **Countdown Timer:** Engage in a challenge mode with a countdown timer to simulate pressure, aiming to enhance both speed and accuracy.
-- **User Account Management:** Our robust server infrastructure supports user registration and login, preserving progress and preferences for a personalized experience.
-- **Blur Effect:** A subtle blur effect signals when the user clicks outside the application or near its edges, indicating a shift in focus away from the typing area.
-- **User Registration and Activity Log:** Comprehensive account management features are now in place, including registration and activity tracking, to boost user engagement and track personal progress.
-- **Neon Database Integration:** By leveraging Neon's cloud capabilities for a PostgreSQL database, we ensure scalable, secure data management and storage.
-- **JWT Token-Based Cookie Use:** We enhance security and user permissions through JWT tokens within cookies, offering a secure and efficient authentication framework.
-- **Scoring System and Detailed Statistics:** A detailed scoring system and performance statistics provide insights into accuracy, words per minute (WPM), errors, and more, facilitating a comprehensive analysis of typing skills.
-- **Enhanced Typing Modes:** The app now includes various typing challenges, from special character integration and numeric typing tests to a quotation system and a freeform 'Zen' mode for unrestricted practice.
-- **Multiple Themes and Sounds:** Personalize your practice environment by selecting from a variety of themes to change the app’s color scheme and toggling keyboard sounds according to your preference.
-
-## What's New
-
-EasyType is profoundly inspired by MonkeyType, a pillar in the typing practice community. However, unlike the original MonkeyType, which is built on vanilla JavaScript, EasyType is fully developed in React. This foundational difference has allowed for the replication of MonkeyType's functionality within EasyType through a completely distinct codebase, with a focus on learning and improvement. This approach not only mirrors the real-time typing test dynamics but also introduces an array of custom features and optimizations inherent to the React ecosystem, distinguishing EasyType in its right while paying homage to the open-source project that inspired it.
+- **Responsive Design:** Delivers a smooth experience on all devices.
+- **Customizable Typing Tests:** Allows users to set their preferred test length.
+- **Immediate Feedback:** Provides detailed metrics right after the test.
+- **Countdown Timer:** Adds a layer of challenge to improve speed and accuracy.
+- **User Accounts:** Enables saving progress and personal preferences.
+- **Blur Effect:** Reduces distractions by blurring when clicking outside the typing area.
+- **Registration & Activity Log:** Helps track user engagement and improvement.
+- **Neon Database:** Utilizes PostgreSQL for secure and scalable data management.
+- **JWT Authentication:** Secures login sessions with JWT token cookies.
+- **Detailed Stats:** Offers a comprehensive analysis of performance.
+- **Various Typing Challenges:** Includes multiple modes for practice, such as special characters and Zen mode.
+- **Themes & Sounds:** Allows customization of the practice environment.
+- **Leaderboard:** Shows the top 10 players and users' global ranking if logged in.
+- **Performance Graphs:** Provides a visual representation of score progress during tests.
 
 ## Getting Started
 
-Begin your EasyType journey by accessing [EasyType](https://typing-web.vercel.app) from any compatible device. Dive into typing practice immediately with no installation required. Just create your account, select your challenge level, and start enhancing your typing skills today.
+To start using EasyType, visit [EasyType](https://typing-web.vercel.app) from any device. No installation required—create an account, choose your challenge, and begin improving your typing skills today.
 
 ## Built With
 
-- **React:** The core technology behind our UI, chosen for its efficient, component-based development capabilities.
-- **Tailwind CSS:** For streamlined responsive design, ensuring a smooth user experience across all device sizes.
-- **HTML & CSS:** The backbone of web content structuring and styling, fundamental for creating a visually appealing and structured application.
+- **React:** For efficient, component-based UI development.
+- **Tailwind CSS:** Ensures a responsive and attractive design.
+- **HTML & CSS:** The foundation for structuring and styling web content.
 
 ## Acknowledgments
 
-- **Inspiration from MonkeyType:** This project is deeply inspired by MonkeyType, acknowledging the significant impact that dedicated practice tools can have on skill development.
-- **The Open-Source Community:** Our development process has greatly benefited from the extensive resources and support within the open-source ecosystem, a contribution we hold in high regard.
+- **Inspired by MonkeyType:** A nod to the influence of dedicated practice tools.
+- **The Open-Source Community:** For their support and the wealth of resources provided.
 
-This documentation reflects all newly incorporated features, presented in a refined and formal manner, marking the evolution of EasyType as a distinguished platform for typing practice.
+This documentation highlights the comprehensive features and improvements of EasyType, emphasizing its development into a leading platform for typing practice.
