@@ -89,12 +89,12 @@ export const footerLinks = [
   {
     icon: Code,
     text: "Github",
-    href: "https://github.com/miguelrodriguezp99/typing-web",
+    href: "https://github.com/miguelrodriguezp99/Easytype",
   },
   {
     icon: Discord,
     text: "Discord",
-    href: "https://github.com/miguelrodriguezp99/typing-web",
+    href: "https://github.com/miguelrodriguezp99/Easytype",
   },
   {
     icon: X,
@@ -104,17 +104,17 @@ export const footerLinks = [
   {
     icon: Terms,
     text: "Terms",
-    href: "https://github.com/miguelrodriguezp99/typing-web",
+    href: "https://github.com/miguelrodriguezp99/Easytype",
   },
   {
     icon: Security,
     text: "Security",
-    href: "https://github.com/miguelrodriguezp99/typing-web",
+    href: "https://github.com/miguelrodriguezp99/Easytype",
   },
   {
     icon: Privacy,
     text: "Privacy",
-    href: "https://github.com/miguelrodriguezp99/typing-web",
+    href: "https://github.com/miguelrodriguezp99/Easytype",
   },
 ];
 
