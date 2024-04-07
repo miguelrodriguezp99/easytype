@@ -88,20 +88,24 @@ const LeaderboardContent = () => {
                 </tr>
               ))}
 
-              {authUser && userTopScore15 ? (
-                <tr className="actual-user-score">
-                  <td className="th-number">{userTopScore15.position}</td>
-                  <td className="th-name">You</td>
-                  <td>{userTopScore15.wpm}</td>
-                  <td>{userTopScore15.accuracy}%</td>
-                  <td>{formatDate(userTopScore15.test_date)}</td>
-                </tr>
-              ) : (
-                <tr className="actual-user-score">
-                  <td colSpan={5} className="not-qualified">
-                    Not qualified
-                  </td>
-                </tr>
+              {authUser && (
+                <>
+                  {userTopScore15?.message ? (
+                    <tr className="actual-user-score">
+                      <td colSpan={5} className="not-qualified">
+                        Not qualified
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr className="actual-user-score">
+                      <td className="th-number">{userTopScore15?.position}</td>
+                      <td className="th-name">You</td>
+                      <td>{userTopScore15?.wpm}</td>
+                      <td>{userTopScore15?.accuracy}%</td>
+                      <td>{formatDate(userTopScore15?.test_date)}</td>
+                    </tr>
+                  )}
+                </>
               )}
             </tbody>
           </table>
@@ -133,20 +137,25 @@ const LeaderboardContent = () => {
                   <td>{formatDate(score.test_date)}</td>
                 </tr>
               ))}
-              {authUser && userTopScore60 ? (
-                <tr className="actual-user-score">
-                  <td className="th-number">{userTopScore60.position}</td>
-                  <td className="th-name">You</td>
-                  <td>{userTopScore60.wpm}</td>
-                  <td>{userTopScore60.accuracy}%</td>
-                  <td>{formatDate(userTopScore60.test_date)}</td>
-                </tr>
-              ) : (
-                <tr className="actual-user-score">
-                  <td colSpan={5} className="not-qualified">
-                    Not qualified
-                  </td>
-                </tr>
+
+              {authUser && (
+                <>
+                  {userTopScore60?.message ? (
+                    <tr className="actual-user-score">
+                      <td colSpan={5} className="not-qualified">
+                        Not qualified
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr className="actual-user-score">
+                      <td className="th-number">{userTopScore60?.position}</td>
+                      <td className="th-name">You</td>
+                      <td>{userTopScore60?.wpm}</td>
+                      <td>{userTopScore60?.accuracy}%</td>
+                      <td>{formatDate(userTopScore60?.test_date)}</td>
+                    </tr>
+                  )}
+                </>
               )}
             </tbody>
           </table>
