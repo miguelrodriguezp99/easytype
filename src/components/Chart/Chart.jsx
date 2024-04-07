@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+
 import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 import { useWordsStore } from "../../store/useWords";
 
@@ -45,16 +45,22 @@ const ChartComp = () => {
       }
 
       // Make sure the last point is included and we dont exceed the timeUsed
-      const lastPoint = filteredPoints.reduce(
-        (prev, curr) =>
-          curr.time <= timeUsed && curr.time > prev.time ? curr : prev,
-        { time: 0, wpm: 0 } // Initial value (it will be replaced)
-      );
+      // Encuentra el último punto antes de timeUsed sin superarlo
+      let lastValidIndex = filteredPoints.length - 1; // Comienza desde el último elemento
+      for (; lastValidIndex >= 0; lastValidIndex--) {
+        if (filteredPoints[lastValidIndex].time <= timeUsed) {
+          break; // Encuentra el índice del último punto válido y sale del bucle
+        }
+      }
 
-      chartData.push({
-        name: lastPoint.time,
-        wpm: lastPoint.wpm,
-      });
+      // Solo añade este punto si realmente encontramos uno válido
+      if (lastValidIndex >= 0) {
+        const lastPoint = filteredPoints[lastValidIndex];
+        chartData.push({
+          name: lastPoint.time,
+          wpm: lastPoint.wpm,
+        });
+      }
     }
 
     return chartData;
