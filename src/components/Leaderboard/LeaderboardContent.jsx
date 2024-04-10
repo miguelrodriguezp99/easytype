@@ -98,9 +98,7 @@ const LeaderboardContent = () => {
                     </tr>
                   ) : (
                     <tr className="actual-user-score">
-                      <td className="th-number">
-                        {userTopScore15?.position + 1}
-                      </td>
+                      <td className="th-number">{userTopScore15?.position}</td>
                       <td className="th-name">You</td>
                       <td>{userTopScore15?.wpm}</td>
                       <td>{userTopScore15?.accuracy}%</td>
@@ -150,9 +148,7 @@ const LeaderboardContent = () => {
                     </tr>
                   ) : (
                     <tr className="actual-user-score">
-                      <td className="th-number">
-                        {userTopScore60?.position + 1}
-                      </td>
+                      <td className="th-number">{userTopScore60?.position}</td>
                       <td className="th-name">You</td>
                       <td>{userTopScore60?.wpm}</td>
                       <td>{userTopScore60?.accuracy}%</td>
