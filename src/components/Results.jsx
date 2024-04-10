@@ -48,7 +48,7 @@ const Results = () => {
           </div>
 
           <div className="morestats">
-            <div className="sm:gap-5">
+            <div className="">
               <div className="stats-top">test type</div>
               <div className="stats-bottom">{testType}</div>
             </div>

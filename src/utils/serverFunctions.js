@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { GAME_MODE } from "../utils/constants";
 
-export const insertScore = async ({
+export const insertScore = ({
   gameMode,
   timeUsed,
   timeSelected,
@@ -25,30 +25,21 @@ export const insertScore = async ({
   }
 
   try {
-    const response = await fetch(
-      `https://${import.meta.env.VITE_API_URL}/scores/scores`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          game_mode,
-          wpm,
-          accuracy,
-          timeSelected,
-          timePlayed,
-        }),
-        credentials: "include",
-      }
-    );
-
-    const data = await response.json();
-
-    if (data.error) {
-      return;
-    }
+    fetch(`https://${import.meta.env.VITE_API_URL}/scores/scores`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        game_mode,
+        wpm,
+        accuracy,
+        timeSelected,
+        timePlayed,
+      }),
+      credentials: "include",
+    });
   } catch (error) {
     console.log("An error occurred while saving your score.");
   }
@@ -120,4 +111,23 @@ export const getUserTopScore = async (gameMode) => {
     console.log("An error occurred while fetching top scores.");
     return [];
   }
+};
+
+export const incrementStartedTests = () => {
+  const authUserString = localStorage.getItem("authUser");
+  const authUser = authUserString ? JSON.parse(authUserString) : null;
+  const token = authUser?.jwt;
+
+  if (!token) {
+    return;
+  }
+
+  fetch(`https://${import.meta.env.VITE_API_URL}/auth/incrementstartedtests`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    credentials: "include",
+  });
 };

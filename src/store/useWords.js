@@ -6,7 +6,7 @@ import {
   getRandomPunctuationWord,
   getRandomNumberWord,
 } from "../utils/helpers";
-import { insertScore } from "../utils/serverFunctions";
+import { insertScore, incrementStartedTests } from "../utils/serverFunctions";
 
 export const useWordsStore = create((set, get) => ({
   selectedWords: 25,
@@ -244,6 +244,7 @@ export const useWordsStore = create((set, get) => ({
   },
 
   setAppStateRunning: () => {
+    incrementStartedTests();
     set({ appState: APP_STATE.RUNNING });
   },
 
