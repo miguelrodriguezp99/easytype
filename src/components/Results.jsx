@@ -29,7 +29,7 @@ const Results = () => {
         appState === APP_STATE.FINISHED ? "show-results" : "hide-results"
       }`}
     >
-      <section className={`results-info-section `}>
+      <section id="results-info-section" className={`results-info-section `}>
         <div className={`results`}>
           <div className="stats">
             <div className="acc-wpm">

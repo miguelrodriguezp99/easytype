@@ -10,6 +10,8 @@
     animation: fade 0.5s ease-in-out;
     z-index: 1;
     width: 100%;
+    background-color: var(--color-primary);
+    
 }
 
 .show-results{
