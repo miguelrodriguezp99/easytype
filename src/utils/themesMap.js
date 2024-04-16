@@ -19,4 +19,7 @@ export const themesMap = [
   {
     name: "sewing-tin",
   },
+  {
+    name: "shadow",
+  },
 ];

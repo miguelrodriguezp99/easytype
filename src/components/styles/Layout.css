@@ -111,6 +111,19 @@ body{
     --color-correct-letter: #03b9de;  
 }
 
+.shadow {
+    --color-primary: #000;
+    --color-secondary: #557d8d;
+    --color-tertiary: #101111;
+    --color-iconstext: #646669;
+    --color-iconstext-hover: #d1d0c5;
+    --color-correct-letter: #eee;
+    --color-incorrect-letter: red;
+
+
+  
+}
+
 
 
 
