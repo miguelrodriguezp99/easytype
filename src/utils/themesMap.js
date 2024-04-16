@@ -16,4 +16,7 @@ export const themesMap = [
   {
     name: "eva-04",
   },
+  {
+    name: "sewing-tin",
+  },
 ];

@@ -42,6 +42,7 @@ body{
     --color-randomwords: #4a4c50; 
 }
 
+
 .dark {
     --color-primary: #333; 
     --color-secondary: #e2b714;
@@ -97,6 +98,21 @@ body{
     --color-incorrect-letter: red;
     --color-correct-letter: #73d378;
 }
+
+
+.sewing-tin{
+ 
+    --color-primary: #2a277a;
+    --color-secondary: #341acb;
+    --color-tertiary: #446ad5;
+    --color-iconstext: #cabb9a;
+    --color-iconstext-hover: #03b9de;
+    --color-incorrect-letter: red;
+    --color-correct-letter: #03b9de;  
+}
+
+
+
 
 
 
