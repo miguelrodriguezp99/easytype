@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Easytype is an application that clones the famous typing website Monkeytype. In this project, I recreated this incredible page, originally built in native JavaScript, and implemented it in React. It has been quite a challenge due to the lack of specific information for building a page of this type, which made the process very complicated. Additionally, even though Monkeytype is an open-source project, transforming all that native JavaScript code into a fully React-based project has been dizzying. However, it has been a challenge that has allowed me to learn a lot.
+Up to date, this is what I consider my best project and the most challenging one to execute. Easytype is an application that clones the famous typing website Monkeytype. In this project, I recreated this incredible page, originally built in native JavaScript, and implemented it in React. It has been quite a challenge due to the lack of specific information for building a page of this type, which made the process very complicated. Additionally, even though Monkeytype is an open-source project, transforming all that native JavaScript code into a fully React-based project has been dizzying. However, it has been a challenge that has allowed me to learn a lot.
 
 ## Features
 
