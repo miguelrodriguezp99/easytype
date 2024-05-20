@@ -4,7 +4,7 @@
 
 ## Introduction
 
-EasyType is a web application aimed at improving typing skills, taking inspiration from the renowned MonkeyType. It's fully responsive, ensuring a seamless experience across various devices, including smartphones, tablets, and desktop computers. The application supports customizable typing tests, in-depth feedback on performance, and user account management for tracking progress over time. Initially a frontend project, EasyType has grown to include numerous features that set it apart, while still paying homage to MonkeyType.
+Easytype is an application that clones the famous typing website Monkeytype. In this project, I recreated this incredible page, originally built in native JavaScript, and implemented it in React. It has been quite a challenge due to the lack of specific information for building a page of this type, which made the process very complicated. Additionally, even though Monkeytype is an open-source project, transforming all that native JavaScript code into a fully React-based project has been dizzying. However, it has been a challenge that has allowed me to learn a lot.
 
 ## Features
 
@@ -38,4 +38,3 @@ To start using EasyType, visit [EasyType](https://typing-web.vercel.app) from an
 - **Inspired by MonkeyType:** A nod to the influence of dedicated practice tools.
 - **The Open-Source Community:** For their support and the wealth of resources provided.
 
-This documentation highlights the comprehensive features and improvements of EasyType, emphasizing its development into a leading platform for typing practice.
