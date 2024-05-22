@@ -13,8 +13,6 @@ Up to date, this is what I consider my best project and the most challenging one
 - **Immediate Feedback:** Provides detailed metrics right after the test.
 - **Countdown Timer:** Adds a layer of challenge to improve speed and accuracy.
 - **User Accounts:** Enables saving progress and personal preferences.
-- **Blur Effect:** Reduces distractions by blurring when clicking outside the typing area.
-- **Registration & Activity Log:** Helps track user engagement and improvement.
 - **Neon Database:** Utilizes PostgreSQL for secure and scalable data management.
 - **JWT Authentication:** Secures login sessions with JWT token cookies.
 - **Detailed Stats:** Offers a comprehensive analysis of performance.
