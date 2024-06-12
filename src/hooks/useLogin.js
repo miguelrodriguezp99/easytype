@@ -22,6 +22,7 @@ const useLogin = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ username, password }),
+          credentials: 'include'
         }
       );
 
